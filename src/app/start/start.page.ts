@@ -8,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class StartPage implements OnInit {
   constructor() { }
 
+  public click: boolean = false; 
+  
   ngOnInit() {
+    this.click = false;
+  }
+
+  setClick(): void{
+    this.click = true;
   }
 
 }

@@ -1,0 +1,52 @@
+:root {
+    /** Geral **/
+    --general-palette-white: #f5f6fb;
+    --general-palette-black: #252525;
+    --general-palette-logo: #05331d;
+    /** Gray Palette **/
+    --gray-palette-900: #121214;
+    --gray-palette-800: #202024;
+    --gray-palette-400: #7c7cba;
+    --gray-palette-200: #c4c4cc;
+    --gray-palette-100: #e1e1e6;
+    /** Green Palette **/
+    --green-palette-900: #353d31;
+    --green-palette-800: #07341f;
+    --green-palette-600: #16a45a;
+    --green-palette-500: #22c55e;
+    --green-palette-200: #6ac07d;
+}  
+
+@keyframes logoAnimation {
+    from {margin-top:70%;}
+    to {margin-top:40%;}
+  }
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#start{
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    background-color: #16a34a;
+}
+
+#logoStart{
+    max-width:40%;
+    color: #f5f6fb;
+    margin-top: 70%;
+}
+
+#logoClick{
+    max-width:40%;
+    color: #f5f6fb;
+    text-align: center;
+    margin-top: 40%;
+    animation-name: logoAnimation;
+    animation-duration: 2s;
+}
+

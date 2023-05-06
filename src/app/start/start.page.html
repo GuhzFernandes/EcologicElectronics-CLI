@@ -1,0 +1,20 @@
+<div id="start">
+  
+  
+  <div *ngIf="click === false; else clicked" id="logoStart" (click)="setClick()">
+    <picture>
+      <img src="../../assets/logo.png" alt="logo" unselectable="on">
+    </picture>
+  </div>
+
+  <ng-template #clicked>
+    <div *ngIf="click === true;" id="logoClick">
+      <picture>
+        <img src="../../assets/logo.png" alt="logo" unselectable="on">
+      </picture>
+      <p>Ecologic Electronics</p>
+    </div>
+  </ng-template>
+  
+</div>
+
