@@ -14,4 +14,23 @@
     <p>Electronics</p>
   </div>
 
+  <div id="login">
+    <p id="loginLabel">Login</p>
+
+    <div id="loginFields">
+      
+      <div class="loginInputs">
+        <input type="email" id="emailInput" placeholder="Email">
+      </div>
+      
+      <div class="loginInputs">
+        <input type="{{ showPassword === false ? 'password' : 'text'}}" id="passwordInput" placeholder="Senha">
+        <button id="passwordButton" (click)="togglePassword();"><ion-icon id="passwordButtonIcon" name="{{showPassword === true ? 'eye-off-outline' : 'eye-outline'}}"></ion-icon></button>
+      </div>
+                  
+    </div>
+
+  </div>
+
+
 </ion-content>

@@ -9,7 +9,11 @@ export class LoginPage implements OnInit {
 
   constructor() { }
 
+  public showPassword: boolean = false;
+
   ngOnInit() {
+    this.showPassword = false;
   }
 
+  togglePassword():void{this.showPassword === true ? this.showPassword = false : this.showPassword = true}
 }
