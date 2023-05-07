@@ -1,18 +1,25 @@
-<div id="start">
-  
-  
-  <div *ngIf="click === false; else clicked" id="logoStart" (click)="setClick()">
-    <picture>
-      <img src="../../assets/logo.png" alt="logo" unselectable="on">
-    </picture>
+<div id="start" (click)="setClick()">
+    
+  <div *ngIf="click === false; else clicked">
+    <div id="logoStart">
+      <picture>
+        <img src="../../assets/logo.png" alt="logo" unselectable="on" width="35%">
+      </picture>
+    </div>
   </div>
 
   <ng-template #clicked>
-    <div *ngIf="click === true;" id="logoClick">
-      <picture>
-        <img src="../../assets/logo.png" alt="logo" unselectable="on">
-      </picture>
-      <p>Ecologic Electronics</p>
+    <div *ngIf="click === true;">
+      <div id="logoClick">
+        <picture id="logo">
+          <img src="../../assets/logo.png" alt="logo" unselectable="on" width="35%">
+        </picture>
+        <p>Ecologic Electronics</p>
+      </div>
+      <div id="startButtons">
+        <button class="startButtons" id="loginButton" routerLink="/login">Login</button>
+        <button class="startButtons" id="signUpButton" routerLink="/signUp">Cadastre-se</button>
+      </div>
     </div>
   </ng-template>
   
