@@ -1,0 +1,58 @@
+@keyframes logoAnimation {
+    from {margin-top:70%;}
+    to {margin-top:40%;}
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.startButtons{
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-radius: 15px;
+    font-size: 130%;
+}
+
+#start{
+    height: 100%;
+    width: 100%;
+    background-color: #16a34a;
+}
+
+#logoStart{
+    margin-top:70%;
+}
+
+#logoClick{
+    font-size: 200%;
+    color: #f5f6fb;
+    margin-top:40%;
+    animation-name: logoAnimation;
+    animation-duration: 2s;
+}
+
+#startButtons{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30%;
+}
+
+#loginButton{
+    background-color: #f5f6fb;
+    color: #05331d;
+}
+
+#signUpButton{
+    background-color: #05331d;
+    color: #f5f6fb;
+}
