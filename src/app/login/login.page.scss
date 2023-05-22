@@ -16,6 +16,11 @@
     display: inline-flex;
 }
 
+.redirectLink{
+    color: #89d29d;
+    text-decoration: underline;
+}
+
 #backButton{
     position: fixed;
     left: 0;
@@ -27,7 +32,7 @@
 }
 
 #logo{
-    font-size: 230%;
+    font-size: 200%;
     font-weight: 520;
     color: #000000;
     margin-top: 45%;
@@ -42,7 +47,7 @@
     font-size: 130%;
     font-weight: 600;
     text-align: left;
-    margin: 20% 0 5% 0;
+    margin: 10% 0 3% 0;
     padding: 5px 5px 5px 0;
 
 }
@@ -85,4 +90,36 @@
 #passwordButtonIcon{
     border-radius: 0px 15px 15px 0px;
     font-size: large;
+}
+
+#checkboxAndLink{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    font-size:smaller;
+}
+
+#keepLoggedIn{
+    --size: 20px;
+    --checkbox-background-checked: #89d29d;
+}
+
+#keepLoggedIn::part(container) {
+    border-radius: 5px;
+    border: 2px solid #89d29d;
+  }
+
+#loginButton{
+    padding: 8px 20% 8px 20%;
+    margin-top: 7%;
+    border-radius: 15px;
+    font-size: 110%;
+    font-weight: 600;
+    background-color: #2d9f64;
+    color: #f5f6fb;
+}
+
+#signup{
+    margin-top: 5%;
+    font-size: smaller;
 }
