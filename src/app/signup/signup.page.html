@@ -21,12 +21,12 @@
     <div id="signupields">
       
       <div id="name">
-        <div class="signupInputs">
-          <input type="text" id="firstNameInput" placeholder="Nome" [(ngModel)]="email">
+        <div id="firstNameField">
+          <input type="text" id="firstNameInput" placeholder="Nome" [(ngModel)]="firstName">
         </div>
         
-        <div class="signupInputs">
-          <input type="text" id="lastNameInput" placeholder="Sobrenome" [(ngModel)]="email">
+        <div id="lastNameField">
+          <input type="text" id="lastNameInput" placeholder="Sobrenome" [(ngModel)]="lastName">
         </div>
       </div>
      
@@ -40,11 +40,19 @@
       </div>
 
       <div class="signupInputs">
-        <input type="{{ showPassword === false ? 'password' : 'text'}}" id="passwordInput" placeholder="Confirmar Senha" [(ngModel)]="password">
-        <button id="passwordButton" (click)="togglePassword();"><ion-icon id="passwordButtonIcon" name="{{showPassword === true ? 'eye-off-outline' : 'eye-outline'}}"></ion-icon></button>
+        <input type="{{ showConfirmPassword === false ? 'password' : 'text'}}" id="passwordInput" placeholder="Confirmar Senha" [(ngModel)]="confirmPassword">
+        <button id="passwordButton" (click)="toggleConfirmPassword();"><ion-icon id="passwordButtonIcon" name="{{showConfirmPassword === true ? 'eye-off-outline' : 'eye-outline'}}"></ion-icon></button>
       </div>
 
     </div>
+
+    <ion-checkbox labelPlacement="end" id='terms' [(ngModel)]="agreedTerms ">Concordo com os termos e politícas de privacidade</ion-checkbox>
+    
+    <button id="signupButton">Criar conta</button>
+    
+    <div id="login" routerLink="/login">Já possui conta? Faça login</div>
+
+
   </div>
 
 </ion-content>

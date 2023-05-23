@@ -9,17 +9,28 @@ export class SignupPage implements OnInit {
 
   constructor() { }
 
+  public firstName:string = '';
+  public lastName:string = '';
   public email: string = '';
   public password: string = '';
+  public confirmPassword:string = '';
+
+
   public showPassword: boolean = false;
-  public keepMeLoggedIn: boolean = false;
+  public showConfirmPassword: boolean = false;
+  public agreedTerms : boolean = false;
 
   ngOnInit() {
+    this.firstName = '';
+    this.lastName = '';
     this.email = '';
     this.password = '';
+    this.confirmPassword = '';
     this.showPassword = false;
-    this.keepMeLoggedIn = false;
+    this.showConfirmPassword = false;
+    this.agreedTerms  = false;
   }
 
   togglePassword():void{this.showPassword === true ? this.showPassword = false : this.showPassword = true}
+  toggleConfirmPassword():void{this.showConfirmPassword === true ? this.showConfirmPassword = false : this.showConfirmPassword = true}
 }

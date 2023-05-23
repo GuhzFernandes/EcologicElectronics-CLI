@@ -19,6 +19,10 @@
 .name{
     display: flex;
     justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+
 }
 
 #backButton{
@@ -57,6 +61,26 @@
     flex-direction: column;
 }
 
+#firstNameField{
+    margin: 2% 1% 2% 0;
+    width: 49%;
+    border-width: 2px;
+    border-color: #89d29d;
+    border-radius: 15px;
+    border-style: solid;
+    display: inline-flex;
+}
+
+#lastNameField{
+    margin: 2% 0% 2% 1%;
+    width: 49%;
+    border-width: 2px;
+    border-color: #89d29d;
+    border-radius: 15px;
+    border-style: solid;
+    display: inline-flex;
+}
+
 #firstNameInput{
     width: 100%;
     background-color: #ffffff;
@@ -64,9 +88,8 @@
     text-align: left;
     border: none;
     border-radius: 15px;
-    width: 100%;
     padding: 2% 2% 2% 4%;
-    margin-right: 5px;
+    margin-right: 2%;
 }
 
 #lastNameInput{
@@ -77,7 +100,7 @@
     border: none;
     border-radius: 15px;
     padding: 2% 2% 2% 4%;
-    margin-left: 5px;
+    margin-left: 2%;
 }
 
 #emailInput{
@@ -113,4 +136,34 @@
 #passwordButtonIcon{
     border-radius: 0px 15px 15px 0px;
     font-size: large;
+}
+
+#terms{
+    margin-top: 5%;
+    font-size:10px;
+    --size: 20px;
+    --checkbox-background-checked: #89d29d;
+}
+
+#terms::part(container) {
+    border-radius: 5px;
+    border: 2px solid #89d29d;
+}
+
+#signupButton{
+    padding: 8px 20% 8px 20%;
+    margin-top: 7%;
+    border-radius: 15px;
+    font-size: 110%;
+    font-weight: 600;
+    background-color: #2d9f64;
+    color: #f5f6fb;
+}
+
+#login{
+    margin-top: 10%;
+    font-size: smaller;
+    color: #89d29d;
+    text-decoration: underline;
+
 }
