@@ -1,3 +1,36 @@
-.cartaoMenu {
-  background-color:blue;
+.botaoColetarMenu {
+  --background: #07341F;
+  height: 40px;
+  width: 100px;
 }
+
+.botaoVerDicas {
+  --background:  #07341F;
+  height: 40px;
+  width: 100px;
+}
+
+.cardContent {
+  padding: 0;
+  text-align: center;
+}
+
+  ion-card {
+    box-shadow: none;
+    border-radius: 20px;
+    background-color: #6AC07D;
+
+    img {
+      border-radius: 5%;
+    }
+
+    ion-card-title{
+      font-weight: bold;
+      padding-bottom: 6px;
+      padding-left: 18px;
+      }
+
+    ion-col {
+      color: white;
+    }
+    }

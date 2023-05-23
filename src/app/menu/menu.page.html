@@ -6,26 +6,72 @@
 
 <ion-content [fullscreen]="true">
   <!--CARD 1-->
-  <ion-card class="cartaoMenu">
-    <ion-card-header>
-      <ion-card-title>
-        Tem fone que não funciona? Mouse quebrado? Faça sua parte sem precisar ir sair de casa!
-      </ion-card-title>
-    </ion-card-header>
-    <ion-card-content style="text-align: center">
-      <ion-button>Coletar</ion-button>
-    </ion-card-content>
-  </ion-card>
-<br>
-<br>
-  <!--CARD 2-->
   <ion-card>
     <ion-card-header>
-      <ion-card-title >
-        Veja como contribruir mais com a natureza!
+      <ion-card-title>
+        <p style="color: white">Tem fone que não funciona? Mouse quebrado? Faça sua parte sem precisar ir sair de casa!</p>
       </ion-card-title>
     </ion-card-header>
-    <ion-card-content style="text-align: center">
-      <ion-button>Ver dicas</ion-button>
+    <ion-card-content style="text-align: center;">
+      <ion-button class="botaoColetarMenu">Coletar</ion-button>
     </ion-card-content>
   </ion-card>
+<br>
+<br>
+
+  <!--CARD 2-->
+  <ion-card class="ion-padding">
+    <ion-card-content class ="cardContent">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="5">
+          <div>
+            <img src="../../assets/images/duaspessoasjogandolixo.png">
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card-title style="color: white;">Veja como pode contribruir mais com a natureza!</ion-card-title>
+          <ion-button class="botaoVerDicas">Ver dicas</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-padding" style="text-align: center;">
+    <ion-grid>
+      <ion-row>
+        <ion-col>Coletas ativas</ion-col>
+        <ion-col></ion-col>
+        <ion-col>Ver detalhes</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="ion-padding" style="text-align: center;">
+    <ion-grid>
+      <ion-row>
+        <ion-col>Data</ion-col>
+        <ion-col>Previsão da chegada</ion-col>
+        <ion-col>Local</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-grid style="text-align: center;">
+        <ion-col>26/10/2022</ion-col>
+        <ion-col>27 às 14 horas</ion-col>
+        <ion-col>Sua casa</ion-col>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid style>
+    <ion-col><ion-icon name="home-outline" size="large"></ion-icon></ion-col>
+    <ion-col><ion-icon name="location-outline" size="large"></ion-icon></ion-col>
+    <ion-col><ion-icon name="add-outline" size="large"></ion-icon></ion-col>
+    <ion-col><ion-icon name="menu-outline" size="large"></ion-icon></ion-col>
+    <ion-col><ion-icon name="person-outline" size="large"></ion-icon></ion-col>
+  </ion-grid>
+
+  </ion-content>
