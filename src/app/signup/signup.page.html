@@ -1,13 +1,50 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
+  
+  <button id="backButton" routerLink="/start"><ion-icon name="arrow-back-outline"></ion-icon></button>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">signup</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <div id="logo">
+    <picture>
+      <img src="../../assets/logo.png" alt="logo" unselectable="on" width="20%">
+    </picture>
+    <p>Ecologic</p>
+    <p>Electronics</p>
+  </div>
+
+
+  <div id="signup">
+    <p id="signupLabel">Criar conta</p>
+
+    <div id="signupields">
+      
+      <div id="name">
+        <div class="signupInputs">
+          <input type="text" id="firstNameInput" placeholder="Nome" [(ngModel)]="email">
+        </div>
+        
+        <div class="signupInputs">
+          <input type="text" id="lastNameInput" placeholder="Sobrenome" [(ngModel)]="email">
+        </div>
+      </div>
+     
+      <div class="signupInputs">
+        <input type="email" id="emailInput" placeholder="Email" [(ngModel)]="email">
+      </div>
+      
+      <div class="signupInputs">
+        <input type="{{ showPassword === false ? 'password' : 'text'}}" id="passwordInput" placeholder="Senha" [(ngModel)]="password">
+        <button id="passwordButton" (click)="togglePassword();"><ion-icon id="passwordButtonIcon" name="{{showPassword === true ? 'eye-off-outline' : 'eye-outline'}}"></ion-icon></button>
+      </div>
+
+      <div class="signupInputs">
+        <input type="{{ showPassword === false ? 'password' : 'text'}}" id="passwordInput" placeholder="Confirmar Senha" [(ngModel)]="password">
+        <button id="passwordButton" (click)="togglePassword();"><ion-icon id="passwordButtonIcon" name="{{showPassword === true ? 'eye-off-outline' : 'eye-outline'}}"></ion-icon></button>
+      </div>
+
+    </div>
+  </div>
+
 </ion-content>
