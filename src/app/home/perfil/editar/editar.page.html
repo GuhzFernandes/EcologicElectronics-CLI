@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <button class="backButton" routerLink="/perfil"><ion-icon name="arrow-back-outline"></ion-icon></button>
+    <div class="p-1">
+      <ion-title size="large">Editar dados</ion-title>
+    </div>
+  </ion-header>
+
+
+  <ion-content padding>
+    <ion-card>
+      <ion-card-content>
+        <div class="img">
+          <img src="../../../assets/UserCircle.png">
+        </div>
+        <ion-card-header>
+          <button>Alterar foto</button>
+        </ion-card-header>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list class="p-1">
+      <ion-item>
+        <ion-input label="Nome" labelPlacement="nome" name="nome" placeholder="João/Maria"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Email" labelPlacement="email" name="email" placeholder="Email@email.com"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Senha" labelPlacement="senha" name="senha" placeholder="****"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Telefone" labelPlacement="telefone" name="telefone" placeholder="9999-9999"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="CPF" labelPlacement="cpf" name="cpf" placeholder="999.999.999-99"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="ion-text-center" size="large">Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-content>
+      <div class="img">
+        <img src="../../../assets/UserCircle.png">
+      </div>
+      <ion-card-header>
+        <ion-card-subtitle class="p-1">email@email.com</ion-card-subtitle>
+        <ion-card-title>Nome</ion-card-title>
+      </ion-card-header>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <div class="p-1">
+        <ion-button color="success" class="p-1" expand="block" routerLink="./editar"> <ion-icon
+            name="create-outline"></ion-icon>
+          Editar Perfil
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <ion-button color="success" class="p-1" expand="block" routerLink="./cartao"> <ion-icon
+            name="card-outline"></ion-icon>
+          Dados do Cartão
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+        <ion-button color="success" class="p-1" expand="block" routerLink="./ajuda"> <ion-icon
+            name="help-circle-outline"></ion-icon>
+          Central de Ajuda
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <div>
+        <img src="../../../assets/config.png">
+      </div>
+    </ion-card-content>
+    <ion-button class="sair" fill="clear"><ion-icon name="exit-outline"></ion-icon> Sair</ion-button>
+  </ion-card>
+</ion-content>
