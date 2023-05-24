@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./start/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'start',
@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./start/signup/signup.module').then( m => m.SignupPageModule)
   },
 
 ];
