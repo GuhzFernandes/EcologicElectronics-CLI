@@ -36,42 +36,37 @@
     </ion-card-content>
   </ion-card>
 
-  <div class="ion-padding" style="text-align: center;">
+  <div class="ion-padding" style="text-align: center;" >
     <ion-grid>
       <ion-row>
-        <ion-col>Coletas ativas</ion-col>
+        <ion-col class="centralizar"><b>Coletas ativas</b></ion-col>
         <ion-col></ion-col>
-        <ion-col>Ver detalhes</ion-col>
+        <ion-col>
+          <ion-button class="botaoDetalhes" fill="clear" size="small">
+            Ver detalhes
+          </ion-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 
-  <div class="ion-padding" style="text-align: center;">
+  <div>
     <ion-grid>
       <ion-row>
-        <ion-col>Data</ion-col>
-        <ion-col>Previsão da chegada</ion-col>
-        <ion-col>Local</ion-col>
+        <ion-col size="auto"></ion-col>
+        <ion-col size="3">Data</ion-col>
+        <ion-col size="6" >Previsão da chegada</ion-col>
+        <ion-col size="2">Local</ion-col>
       </ion-row>
     </ion-grid>
   </div>
+  
+<ion-grid class="resumeMenu" [fixed]="true">
+  <ion-row>
+    <ion-col size="3">26/10/2022</ion-col>
+    <ion-col size="6">27 às 14 horas</ion-col>
+    <ion-col size="3">Sua casa</ion-col>
+  </ion-row>
+</ion-grid>
 
-  <ion-card>
-    <ion-card-content>
-      <ion-grid style="text-align: center;">
-        <ion-col>26/10/2022</ion-col>
-        <ion-col>27 às 14 horas</ion-col>
-        <ion-col>Sua casa</ion-col>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-grid style>
-    <ion-col><ion-icon name="home-outline" size="large"></ion-icon></ion-col>
-    <ion-col><ion-icon name="location-outline" size="large"></ion-icon></ion-col>
-    <ion-col><ion-icon name="add-outline" size="large"></ion-icon></ion-col>
-    <ion-col><ion-icon name="menu-outline" size="large"></ion-icon></ion-col>
-    <ion-col><ion-icon name="person-outline" size="large"></ion-icon></ion-col>
-  </ion-grid>
-
-  </ion-content>
+</ion-content>
