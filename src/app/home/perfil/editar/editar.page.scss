@@ -18,9 +18,11 @@
         margin-bottom: 10px;
     }
 }
-.container-button{
+
+.container-button {
     margin: 20px;
 }
+
 .button-container {
     padding: 5px;
 }
@@ -28,6 +30,10 @@
 
 .edit-list {
     margin: 5px;
+}
+
+.edit-list>ion-list >ion-item >ion-label {
+    padding-top: 10px;
 }
 
 .edit-inputs {

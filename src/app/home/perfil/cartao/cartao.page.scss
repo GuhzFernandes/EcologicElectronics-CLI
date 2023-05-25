@@ -9,14 +9,12 @@
     margin: 20px;
 }
 
+ion-item >ion-label {
+    padding-top: 10px;
+}
+
 .links-container>a {
     color: #6AC07D;
 }
 
 
-.cartao-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-}

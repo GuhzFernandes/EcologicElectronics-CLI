@@ -5,10 +5,21 @@
 .help-contact {
     text-align: center;
 }
-.help-item{
+
+.help-item {
     text-align: center;
 }
 
 ion-item {
     padding: 10px;
+}
+
+.help {
+    display: flex;
+    justify-content: center;
+}
+
+.help-image {
+    height: 205px;
+
 }
