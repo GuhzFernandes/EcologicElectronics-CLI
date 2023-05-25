@@ -1,13 +1,41 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>cartao</ion-title>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/perfil">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar Dados do Cartão</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">cartao</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nome no Cartão</ion-label>
+        <ion-input type="text" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Numeração do Cartão</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Validade do Cartão</ion-label>
+        <ion-input type="date"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">CVV do Cartão</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="links-container">
+    <a>Registrar novo cartão</a>
+    <a>Excluir cartão</a>
+  </div>
+  <div class="cartao-image">
+    <img src="../../../../assets/cartao.png">
+  </div>
 </ion-content>

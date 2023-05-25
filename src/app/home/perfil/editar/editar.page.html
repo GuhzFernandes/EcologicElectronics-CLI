@@ -1,44 +1,42 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <button class="backButton" routerLink="/perfil"><ion-icon name="arrow-back-outline"></ion-icon></button>
-    <div class="p-1">
-      <ion-title size="large">Editar dados</ion-title>
-    </div>
-  </ion-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/perfil">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar Dados</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-
-  <ion-content padding>
-    <ion-card>
-      <ion-card-content>
-        <div class="img">
-          <img src="../../../assets/UserCircle.png">
-        </div>
-        <ion-card-header>
-          <button>Alterar foto</button>
-        </ion-card-header>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-list class="p-1">
+<ion-content>
+  <div class="profile-picture">
+    <img src="../../../../assets/mateus.jpg" alt="Foto do Usuário">
+    <a>Alterar imagem</a>
+  </div>
+  <div class="edit-list">
+    <ion-list>
       <ion-item>
-        <ion-input label="Nome" labelPlacement="nome" name="nome" placeholder="João/Maria"></ion-input>
+        <ion-label class="edit-inputs" position="stacked">Nome:</ion-label>
+        <ion-input class="edit-inputs"></ion-input>
       </ion-item>
-
       <ion-item>
-        <ion-input label="Email" labelPlacement="email" name="email" placeholder="Email@email.com"></ion-input>
+        <ion-label class="edit-inputs" position="stacked">Email:</ion-label>
+        <ion-input class="edit-inputs"></ion-input>
       </ion-item>
-
       <ion-item>
-        <ion-input label="Senha" labelPlacement="senha" name="senha" placeholder="****"></ion-input>
+        <ion-label class="edit-inputs" position="stacked">Telefone:</ion-label>
+        <ion-input class="edit-inputs"></ion-input>
       </ion-item>
-
       <ion-item>
-        <ion-input label="Telefone" labelPlacement="telefone" name="telefone" placeholder="9999-9999"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-input label="CPF" labelPlacement="cpf" name="cpf" placeholder="999.999.999-99"></ion-input>
+        <ion-label class="edit-inputs" position="stacked">CPF:</ion-label>
+        <ion-input class="edit-inputs"></ion-input>
       </ion-item>
     </ion-list>
-  </ion-content>
+  </div>
+
+  <div class="container-button">
+    <ion-button expand="half" color="success" class="button-container">Salvar</ion-button>
+    <ion-button expand="half" color="danger" class="button-container">Editar senha</ion-button>
+  </div>
 </ion-content>
