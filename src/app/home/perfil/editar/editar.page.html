@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/perfil">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar Dados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile-picture">
+    <img src="../../../../assets/mateus.jpg" alt="Foto do Usuário">
+    <a>Alterar imagem</a>
+  </div>
+  <div class="edit-list">
+    <ion-list>
+      <ion-item>
+        <ion-label class="edit-inputs" position="stacked">Nome:</ion-label>
+        <ion-input class="edit-inputs"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="edit-inputs" position="stacked">Email:</ion-label>
+        <ion-input class="edit-inputs"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="edit-inputs" position="stacked">Telefone:</ion-label>
+        <ion-input class="edit-inputs"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="edit-inputs" position="stacked">CPF:</ion-label>
+        <ion-input class="edit-inputs"></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="container-button">
+    <ion-button expand="half" color="success" class="button-container">Salvar</ion-button>
+    <ion-button expand="half" color="danger" fill="outline" class="button-container">Editar senha</ion-button>
+  </div>
+</ion-content>

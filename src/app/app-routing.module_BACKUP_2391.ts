@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,19 +13,19 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./start/login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./start/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'start',
-    loadChildren: () => import('./start/start.module').then(m => m.StartPageModule)
+    loadChildren: () => import('./start/start.module').then( m => m.StartPageModule)
   },
   {
     path: 'signup',
-    loadChildren: () => import('./start/signup/signup.module').then(m => m.SignupPageModule)
+    loadChildren: () => import('./start/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./home/perfil/perfil.module').then(m => m.PerfilPageModule)
+    loadChildren: () => import('./home/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
 
 ];
@@ -34,7 +34,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
-  exports:
-    [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
