@@ -1,0 +1,169 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.signupInputs{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+    border-width: 2px;
+    border-color: #89d29d;
+    border-radius: 15px;
+    border-style: solid;
+    display: inline-flex;
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+
+}
+
+#backButton{
+    position: fixed;
+    left: 0;
+    margin-top: 13%;
+    padding: 2% 2% 2% 5% ;
+    background-color: #ffffff;
+    color: black;
+    font-size: 170%;
+}
+
+#logo{
+    font-size: 200%;
+    font-weight: 520;
+    color: #000000;
+    margin-top: 35%;
+}
+
+#signup{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#signupLabel{
+    font-size: 130%;
+    font-weight: 600;
+    text-align: left;
+    margin: 10% 0 3% 0;
+    padding: 5px 5px 5px 0;
+
+}
+
+#signupFields{
+    width: 100%;
+    flex-direction: column;
+}
+
+#firstNameField{
+    margin: 2% 1% 2% 0;
+    width: 49%;
+    border-width: 2px;
+    border-color: #89d29d;
+    border-radius: 15px;
+    border-style: solid;
+    display: inline-flex;
+}
+
+#lastNameField{
+    margin: 2% 0% 2% 1%;
+    width: 49%;
+    border-width: 2px;
+    border-color: #89d29d;
+    border-radius: 15px;
+    border-style: solid;
+    display: inline-flex;
+}
+
+#firstNameInput{
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    border: none;
+    border-radius: 15px;
+    padding: 2% 2% 2% 4%;
+    margin-right: 2%;
+}
+
+#lastNameInput{
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    border: none;
+    border-radius: 15px;
+    padding: 2% 2% 2% 4%;
+    margin-left: 2%;
+}
+
+#emailInput{
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    border: none;
+    border-radius: 15px;
+    width: 100%;
+    padding: 2% 2% 2% 4%;
+}
+
+#passwordInput{
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    border: none;
+    border-radius: 15px 0px 0px 15px;
+    width: 100%;
+    padding: 2% 2% 2% 4%;
+}
+
+#passwordButton{
+    background-color: #ffffff;
+    color:#000000;
+    border-radius: 0px 15px 15px 0px;
+    padding: 2% 2% 2% 2%;
+    width: 10%;
+    height: auto;
+}
+
+#passwordButtonIcon{
+    border-radius: 0px 15px 15px 0px;
+    font-size: large;
+}
+
+#terms{
+    margin-top: 5%;
+    font-size:10px;
+    --size: 20px;
+    --checkbox-background-checked: #89d29d;
+}
+
+#terms::part(container) {
+    border-radius: 5px;
+    border: 2px solid #89d29d;
+}
+
+#signupButton{
+    padding: 8px 20% 8px 20%;
+    margin-top: 7%;
+    border-radius: 15px;
+    font-size: 110%;
+    font-weight: 600;
+    background-color: #2d9f64;
+    color: #f5f6fb;
+}
+
+#login{
+    margin-top: 10%;
+    font-size: smaller;
+    color: #89d29d;
+    text-decoration: underline;
+
+}
