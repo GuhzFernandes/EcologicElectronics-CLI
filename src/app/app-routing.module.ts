@@ -13,19 +13,23 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./start/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'start',
-    loadChildren: () => import('./start/start.module').then( m => m.StartPageModule)
+    loadChildren: () => import('./start/start.module').then(m => m.StartPageModule)
   },
   {
     path: 'signup',
-    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./start/signup/signup.module').then(m => m.SignupPageModule)
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
+    path: 'perfil',
+    loadChildren: () => import('./home/perfil/perfil.module').then(m => m.PerfilPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./home/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
 
 
