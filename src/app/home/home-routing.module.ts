@@ -13,7 +13,11 @@ const routes: Routes = [
       loadChildren:()=> import('./perfil/perfil.module').then(m => m.PerfilPageModule)},
 
     ]
+  },  {
+    path: 'historico',
+    loadChildren: () => import('./historico/historico.module').then( m => m.HistoricoPageModule)
   }
+
 ];
 
 @NgModule({

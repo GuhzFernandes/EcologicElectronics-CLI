@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home/perfil">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Histórico de Pedidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="segmento" class="segment">
+    <ion-segment-button value="confirmados" class="segment-button">
+      <ion-label>Pedidos Confirmados</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="historico" class="segment-button">
+      <ion-label>Histórico</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="segmento === 'confirmados'" class="pedidos-confirmados">
+    <ion-list>
+      <div class="title">
+        <ion-label>Data</ion-label>
+        <ion-label>Tipo</ion-label>
+        <ion-label>Status</ion-label>
+      </div>
+      <ion-item *ngFor="let pedido of pedidosConfirmados">
+        <ion-label>{{ pedido.data }}</ion-label>
+        <ion-label>{{ pedido.Tipo }}</ion-label>
+        <ion-button color="success">Rastreio</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="segmento === 'historico'" class="historico-pedidos">
+    <ion-list>
+      <div class="title">
+        <ion-label>Data</ion-label>
+        <ion-label>Tipo</ion-label>
+        <ion-label>Status</ion-label>
+      </div>
+      <ion-item *ngFor="let pedido of historicoPedidos">
+        <ion-label>{{ pedido.data }}</ion-label>
+        <ion-label>{{ pedido.Tipo }}</ion-label>
+        <ion-button color="warning">coletado</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
