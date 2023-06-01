@@ -32,6 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/menu/menu.module').then( m => m.MenuPageModule)
   },
 
+
 ];
 
 @NgModule({
