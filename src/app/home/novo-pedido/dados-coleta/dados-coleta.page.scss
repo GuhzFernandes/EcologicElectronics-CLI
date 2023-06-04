@@ -8,7 +8,7 @@ ion-progress-bar {
 
 .text-container {
     text-align: left;
-    margin: 20px;
+    margin: 10px;
 }
 
 ion-card {
@@ -29,4 +29,57 @@ ion-radio {
 
     border: 1px solid #E6E6E6;
     background-color: #E6E6E6;
+}
+
+.segment-button {
+    padding: -10px;
+}
+
+.title,
+.segment {
+    margin-top: 10px;
+}
+
+p {
+    padding: 5px;
+}
+
+.img {
+    display: flex;
+    justify-content: center;
+}
+
+
+.pagamento {
+    display: flex;
+    justify-content: center;
+
+    background-color: #6AC07D;
+    border-radius: 9px 9px 0 0;
+}
+
+.resumo {
+    border: 1px solid #6AC07D;
+    border-radius: 10px;
+
+    margin-top: 20px;
+}
+
+.formcard {
+    height: 180px;
+    margin: 10px;
+
+    color: #E6E6E6;
+
+    background: rgb(5, 51, 29);
+    background: linear-gradient(90deg, rgba(5, 51, 29, 1) 0%, rgba(116, 193, 124, 1) 100%);
+
+    border: 1px solid #5a5a5a;
+    border-radius: 20px;
+    box-shadow: 5px 5px 30px #5a5a5a;
+}
+
+.logo {
+    height: 30px;
+    width: 30px;
 }
