@@ -48,7 +48,7 @@
 
     <ion-checkbox labelPlacement="end" id='terms' [(ngModel)]="agreedTerms ">Concordo com os termos e politícas de privacidade</ion-checkbox>
     
-    <button id="signupButton">Criar conta</button>
+    <button id="signupButton" (click)="signup()">Criar conta</button>
     
     <div id="login" routerLink="/login">Já possui conta? Faça login</div>
 

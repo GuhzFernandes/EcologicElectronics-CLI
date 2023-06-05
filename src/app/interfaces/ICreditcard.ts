@@ -1,8 +1,8 @@
-export default interface Creditcard {
+export default interface ICreditcard {
     id: number;
     userId: number;
     name?: string;
     number?: number;
-    expire?: Date;
+    expire?: string;
     cvv?: number;
 }

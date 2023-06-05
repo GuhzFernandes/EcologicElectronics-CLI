@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-//import IUser from '../../interfaces/IUser';
-
 
 @Component({
   selector: 'app-login',

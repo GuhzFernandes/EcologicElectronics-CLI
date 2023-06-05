@@ -1,4 +1,4 @@
-export interface Address {
+export interface IAddress {
     id: number;
     userId: number;
     zipCode?: number;

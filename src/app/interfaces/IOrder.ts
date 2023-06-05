@@ -1,4 +1,4 @@
-export default interface Order {
+export default interface IOrder {
     id: number;
     userId: number;
     addressId: number;
