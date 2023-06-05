@@ -5,6 +5,6 @@ export default interface Order {
     size: string;
     paymentMethod?: string;
     orderStatus?: string;
-    paymentStatus?: string;
+    paymentStatus?: boolean;
     date: Date;
 }
