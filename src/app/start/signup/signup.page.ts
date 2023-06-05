@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   public firstName:string = '';
   public lastName:string = '';
@@ -33,4 +35,23 @@ export class SignupPage implements OnInit {
 
   togglePassword():void{this.showPassword === true ? this.showPassword = false : this.showPassword = true}
   toggleConfirmPassword():void{this.showConfirmPassword === true ? this.showConfirmPassword = false : this.showConfirmPassword = true}
+
+  async signup():Promise<void>{
+    if(this.password == this.confirmPassword){
+      if(this.agreedTerms){
+        this.loginService.signup(this.firstName,this.lastName,this.email,this.password);
+        if(await this.loginService.checkUser()){
+        this.router.navigate(["/home/menu"]);
+        }
+      }
+      else{
+        console.log('falta aceitar os termos');
+      }
+    }
+    else{
+      console.log('senhas não conferem');
+    }
+  }
+  
+
 }
