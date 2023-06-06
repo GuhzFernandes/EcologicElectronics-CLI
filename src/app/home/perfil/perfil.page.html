@@ -13,9 +13,9 @@
         <img src="../../../assets/mateus.jpg" alt="Foto do Usuário">
       </ion-avatar>
       <div class="profile-info">
-        <h2> Mateus </h2>
-        <p> email@email.com.br </p>
-        <ion-button class="profile-exit" fill="clear"><ion-icon name="exit-outline"></ion-icon> Sair</ion-button>
+        <h2> {{nome}} </h2>
+        <p> {{email}} </p>
+        <ion-button class="profile-exit" fill="clear" (click)="logout()"><ion-icon name="exit-outline"></ion-icon> Sair</ion-button>
       </div>
     </div>
   </div>

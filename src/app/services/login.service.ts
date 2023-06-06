@@ -72,4 +72,10 @@ export class LoginService {
       console.log('Usuario resetado com sucesso!');
     }
   }
+
+  public logout(){
+    this.storage.clear();
+    console.log('Usuario resetado com sucesso!');
+  }
+
 }
