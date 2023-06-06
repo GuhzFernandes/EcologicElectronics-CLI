@@ -32,7 +32,7 @@ export class PedidoService {
   //Metodo GET - all
   public async listarPedidos(idUsuario?:number) {
     this.pedidos=[];
-    const response = await fetch(`${this.api}/${idUsuario}`);
+    const response = await fetch(`${this.api}/usuario/${idUsuario}`);
     const data = await response.json();
     console.log(data);
     this.storage.set('pedidos', this.pedidos);
@@ -40,7 +40,7 @@ export class PedidoService {
 
   //Metodo POST
   public async novoPedido(pagamento:string,statusPagamento:string,statusPedido:string,tamanho:string,idUsuario?:number) {
-    const response = await fetch(`${this.api}/`, {
+    const response = await fetch(`${this.api}`, {
       method: 'POST',
       body: JSON.stringify({
         user:{
