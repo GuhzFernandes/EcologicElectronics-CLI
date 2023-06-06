@@ -10,12 +10,12 @@
   <div class="profile-container">
     <div class="profile-header">
       <ion-avatar class="profile-avatar">
-        <img src="../../../assets/mateus.jpg" alt="Foto do Usuário">
+        <img src="../../../assets/UserCircle.png" alt="Foto do Usuário">
       </ion-avatar>
       <div class="profile-info">
-        <h2> Mateus </h2>
-        <p> email@email.com.br </p>
-        <ion-button class="profile-exit" fill="clear"><ion-icon name="exit-outline"></ion-icon> Sair</ion-button>
+        <h2> {{nome}} </h2>
+        <p> {{email}} </p>
+        <ion-button class="profile-exit" fill="clear" (click)="logout()"><ion-icon name="exit-outline"></ion-icon> Sair</ion-button>
       </div>
     </div>
   </div>
@@ -26,11 +26,13 @@
     <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>
 
+  <!--
   <div class="profile-buttons" routerLink="./cartao">
     <ion-icon name="card-outline"></ion-icon>
     <a class="">Dados do Cartão</a>
     <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>
+  -->
 
   <div class="profile-buttons" routerLink="./ajuda">
     <ion-icon name="help-circle-outline"></ion-icon>

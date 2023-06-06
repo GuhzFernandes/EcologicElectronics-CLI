@@ -9,6 +9,12 @@ const routes: Routes = [
     children:[
       {path:'menu',
       loadChildren:()=> import('./menu/menu.module').then(m => m.MenuPageModule)},
+      {path:'localizacao',
+      loadChildren:()=> import('./localizacao/localizacao.module').then(m => m.LocalizacaoPageModule)},
+      {path:'novo',
+      loadChildren:()=> import('./novo-pedido/novo-pedido.module').then(m => m.NovoPedidoPageModule)},
+      {path:'historico',
+      loadChildren:()=> import('./historico/historico.module').then(m => m.HistoricoPageModule)},
       {path:'perfil',
       loadChildren:()=> import('./perfil/perfil.module').then(m => m.PerfilPageModule)},
 

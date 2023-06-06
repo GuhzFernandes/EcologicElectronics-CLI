@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-perfil',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
+  
 
-  constructor() { }
+  constructor(private router: Router,private loginService: LoginService) { 
+  }
+  public nome: string = '';
+  public email: string = '';
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.loginService.getUser().then( (user) => {
+      this.nome = user.firstName?? '';
+      this.email = user.email?? '';
+    });
   }
 
+  public logout():void{
+    this.loginService.logout();
+    this.router.navigate(["/start"]);
+  }
 }
