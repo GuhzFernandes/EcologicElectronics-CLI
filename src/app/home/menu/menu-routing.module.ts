@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: MenuPage
+  },  {
+    path: 'dica',
+    loadChildren: () => import('./dica/dica.module').then( m => m.DicaPageModule)
   }
+
 ];
 
 @NgModule({
