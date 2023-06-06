@@ -1,10 +1,9 @@
 export default interface IOrder {
-    id: number;
-    userId: number;
-    addressId: number;
-    size: string;
-    paymentMethod?: string;
-    orderStatus?: string;
-    paymentStatus?: boolean;
-    date: Date;
+    id?: number;
+    user?: any;
+    tipolixo?: string;
+    statuspedido?: string;
+    statuspagamento?: string;
+    formapagamento?: string;
+    begindate?: Date;
 }

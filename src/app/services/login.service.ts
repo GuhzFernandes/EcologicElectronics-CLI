@@ -19,6 +19,7 @@ export class LoginService {
 
   }
 
+  //Metodo GET
   public async login(email: string, password: string, keepMeLoggedIn: boolean) {
     const response = await fetch(`${this.api}/login?email=${email}&senha=${password}`);
     const data = await response.json();
@@ -36,7 +37,7 @@ export class LoginService {
     this.storage.set('keepLogin', keepMeLoggedIn);
   }
 
-  //Metodo 'POST'
+  //Metodo POST
   public async signup(firstName: string, lastName: string, email: string, password: string) {
     const dados = { nome: firstName, sobrenome: lastName, email: email, senha: password };
     const response = await fetch(`${this.api}/cadastro`, {
@@ -66,6 +67,36 @@ export class LoginService {
     this.storage.set('keepLogin', true);
   }
 
+  //Metodo PUT
+  public async update(nome: string, sobrenome: string, email: string, senha: string, telefone?: number, cpf?: number) {
+    this.user = {
+      id: this.user.id,
+      firstName: nome,
+      lastName: sobrenome,
+      email: email,
+      password: senha,
+      phoneNumber: telefone,
+      cpf: cpf
+    };
+    this.storage.set('user', this.user);
+    const response = await fetch(`${this.api}/${this.user.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        id: this.user.id,
+        nome: `${this.user.firstName}`,
+        sobrenome: `${this.user.lastName}`,
+        email: `${this.user.email}`,
+        senha: `${this.user.password}`,
+        telefone: this.user.phoneNumber,
+        cpf: this.user.cpf
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    });
+    console.log(await response.json());
+  }
+
   public async checkUser(): Promise<boolean> {
     this.user = await this.storage.get('user');
     console.log(this.user);
@@ -90,20 +121,6 @@ export class LoginService {
       this.storage.clear();
       console.log('Usuario resetado com sucesso!');
     }
-  }
-
-  public async update(nome: string, sobrenome: string, email: string, senha: string, telefone?: number, cpf?: number) {
-    this.user = {
-      id: this.user.id,
-      firstName: nome,
-      lastName: sobrenome,
-      email: email,
-      password: senha,
-      phoneNumber: telefone,
-      cpf: cpf
-    };
-    this.storage.set('user', this.user);
-    //Fazer função do servidor
   }
 
   public logout() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { PedidoService } from 'src/app/services/pedido.service';
 
 @Component({
   selector: 'app-dados-coleta',
@@ -22,7 +23,7 @@ export class DadosColetaPage implements OnInit {
   public validcard: string = '';
   public cvvcard: string = '';
 
-  constructor(private router: Router,private loginService: LoginService) {
+  constructor(private router: Router,private loginService: LoginService,private pedidoService: PedidoService) {
   }
 
   async ngOnInit() {
@@ -32,8 +33,7 @@ export class DadosColetaPage implements OnInit {
   }
 
   public confirmarPedido(){
-    //gerar service
-    console.log(`id: gerado no banco, data: gerado no banco, formapagamento: ${this.segmento}, statuspagamento: ${this.statusPagamento}, statuspedido: ${this.statusPedido}, tipolixo: ${this.tamanho}, id_usuario: ${this.idUsuario}`);
+    this.pedidoService.novoPedido(this.segmento,this.statusPagamento,this.statusPedido,this.tamanho,this.idUsuario);
     this.router.navigate(["/home/novo-pedido/pedido-confirmado"]);
     
   }
