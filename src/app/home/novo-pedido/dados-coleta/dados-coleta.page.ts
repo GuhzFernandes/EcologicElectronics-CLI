@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-dados-coleta',
@@ -7,18 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DadosColetaPage implements OnInit {
   //Definindo o segmento padrão para ser exibido
-  segmento = 'pix';
-  
-  namecard = '';
-  numcard = '';
-  validcard = '';
-  cvvcard = '';
+  public segmento: string = 'pix';
+  public tamanho: string = '';
 
-  constructor() {
-    //console.log(this.segmento)
+  public idUsuario?: number; 
+  public statusPagamento: string = 'Aguard. pgto';
+  public statusPedido: string = 'Aguard. pgto';
+
+  
+  public namecard:string = '';
+  public numcard: string = '';
+  public validcard: string = '';
+  public cvvcard: string = '';
+
+  constructor(private router: Router,private loginService: LoginService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.loginService.getUser().then( (user) => {
+      this.idUsuario = user.id;
+    });
+  }
+
+  public confirmarPedido(){
+    //gerar service
+    console.log(`id: gerado no banco, data: gerado no banco, formapagamento: ${this.segmento}, statuspagamento: ${this.statusPagamento}, statuspedido: ${this.statusPedido}, tipolixo: ${this.tamanho}, id_usuario: ${this.idUsuario}`);
+    this.router.navigate(["/home/novo-pedido/pedido-confirmado"]);
+    
   }
 
 }

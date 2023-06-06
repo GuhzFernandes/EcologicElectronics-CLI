@@ -45,7 +45,7 @@
 
     <ion-list-header>Tamanho da Coleta</ion-list-header>
 
-    <ion-radio-group value="TamanhoLixo">
+    <ion-radio-group [(ngModel)]="tamanho">
 
       <ion-item lines="none">
         <ion-radio slot="start" value="pequeno"></ion-radio>
@@ -269,6 +269,6 @@
 
   </ion-card-content>
 
-  <ion-button color="success" expand="full"  routerLink="/home/novo-pedido/pedido-confirmado">Confirmar</ion-button>
+  <ion-button color="success" expand="full"  (click)="confirmarPedido()">Confirmar</ion-button>
 
 </ion-content>
