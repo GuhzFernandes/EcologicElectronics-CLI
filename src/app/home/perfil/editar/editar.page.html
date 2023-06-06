@@ -12,7 +12,7 @@
 <ion-content>
   <div class="profile-picture">
     <img src="../../../../assets/UserCircle.png" alt="Foto do Usuário">
-    <a>Alterar imagem</a>
+    <!-- <a>Alterar imagem</a> -->
   </div>
   <div class="edit-list">
     <ion-list>
@@ -29,6 +29,10 @@
         <ion-input class="edit-inputs" [(ngModel)]="email"></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label class="edit-inputs" position="stacked">Senha:</ion-label>
+        <ion-input class="edit-inputs" [(ngModel)]="senha"></ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label class="edit-inputs" position="stacked">Telefone:</ion-label>
         <ion-input class="edit-inputs" [(ngModel)]="telefone"></ion-input>
       </ion-item>
@@ -41,6 +45,6 @@
 
   <div class="container-button">
     <ion-button expand="half" color="success" class="button-container" (click)="save()">Salvar</ion-button>
-    <ion-button expand="half" color="danger" fill="outline" class="button-container">Editar senha</ion-button>
+    <!-- <ion-button expand="half" color="danger" fill="outline" class="button-container">Editar senha</ion-button> -->
   </div>
 </ion-content>

@@ -14,6 +14,7 @@ export class EditarPage implements OnInit {
   public nome: string = '';
   public sobrenome: string = '';
   public email: string = '';
+  public senha: string = '';
   public telefone?: number;
   public cpf?: number;
 
@@ -22,13 +23,14 @@ export class EditarPage implements OnInit {
       this.nome = user.firstName?? '';
       this.sobrenome = user.lastName??'';
       this.email = user.email?? '';
+      this.email = user.password?? '';
       this.telefone = user.phoneNumber;
       this.cpf = user.cpf;
     });
   }
 
   async save():Promise<void>{
-    this.loginService.update(this.nome, this.sobrenome, this.email, this.telefone, this.cpf);  
+    this.loginService.update(this.nome, this.sobrenome, this.email,this.senha , this.telefone, this.cpf);  
     this.router.navigate(["/home/perfil"]);
     }
 

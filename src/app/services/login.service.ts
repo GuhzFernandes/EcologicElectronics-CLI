@@ -36,7 +36,7 @@ export class LoginService {
     this.storage.set('keepLogin', keepMeLoggedIn);
   }
 
-  //Metodo 'POST' usando GET.
+  //Metodo 'POST'
   public async signup(firstName: string, lastName: string, email: string, password: string) {
     const dados = { nome: firstName, sobrenome: lastName, email: email, senha: password };
     const response = await fetch(`${this.api}/cadastro`, {
@@ -64,23 +64,6 @@ export class LoginService {
     };
     this.storage.set('user', this.user);
     this.storage.set('keepLogin', true);
-
-    /*
-    const response = await fetch(`${this.api}/signup?nome=${firstName}&sobrenome=${lastName}&email=${email}&senha=${password}`);
-    //cadastro
-    const data = await response.json();
-    const userData = data[0];
-    this.user = {
-      id: userData.id,
-      firstName: userData.nome,
-      lastName: userData.sobrenome,
-      email: userData.email,
-      password: userData.senha,
-      phoneNumber: userData.telefone,
-      cpf: userData.cpf
-    };
-    this.storage.set('user', this.user);
-    this.storage.set('keepLogin', false);*/
   }
 
   public async checkUser(): Promise<boolean> {
@@ -109,13 +92,13 @@ export class LoginService {
     }
   }
 
-  public async update(nome: string, sobrenome: string, email: string, telefone?: number, cpf?: number) {
+  public async update(nome: string, sobrenome: string, email: string, senha: string, telefone?: number, cpf?: number) {
     this.user = {
       id: this.user.id,
       firstName: nome,
       lastName: sobrenome,
       email: email,
-      password: this.user.password,
+      password: senha,
       phoneNumber: telefone,
       cpf: cpf
     };
