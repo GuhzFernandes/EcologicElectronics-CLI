@@ -15,13 +15,14 @@ export class LoginService {
   constructor(storage: Storage, private http:HttpClient) {
     this.storage = storage;
     this.storage.create();
+    this.storage.get('user');
 
    }
 
   public async login(email:string, password:string, keepMeLoggedIn: boolean){
     const response =  await fetch(`${this.api}/login?email=${email}&senha=${password}`);
     const data = await response.json();
-    const userData = data;
+    const userData = data[0];
     this.user = {id: userData.id, 
       firstName: userData.nome,
       lastName: userData.sobrenome,
@@ -51,6 +52,7 @@ export class LoginService {
 
   public async checkUser():Promise<boolean>{
     this.user = await this.storage.get('user');
+    console.log(this.user);
     return this.user != null ? true : false;
   }
 
@@ -61,6 +63,7 @@ export class LoginService {
 
   public async getUser(){
     this.user = await this.storage.get('user');
+    console.log(this.user);
     return this.user;
   }
 
@@ -71,6 +74,18 @@ export class LoginService {
       this.storage.clear();
       console.log('Usuario resetado com sucesso!');
     }
+  }
+
+  public async update(nome: string, sobrenome: string, email: string,telefone?: number, cpf?: number){
+    this.user = {id: this.user.id, 
+      firstName: nome,
+      lastName: sobrenome,
+      email: email,
+      password: this.user.password,
+      phoneNumber: telefone,
+      cpf: cpf};
+    this.storage.set('user', this.user);
+    //Fazer função do servidor
   }
 
   public logout(){

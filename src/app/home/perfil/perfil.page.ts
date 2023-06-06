@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import IUser from 'src/app/interfaces/IUser';
 
 @Component({
   selector: 'app-perfil',
@@ -15,13 +14,13 @@ export class PerfilPage implements OnInit {
   }
   public nome: string = '';
   public email: string = '';
-  public user: IUser = {};
 
   async ngOnInit() {
-    this.user = await this.loginService.getUser();
-    this.nome = this.user.firstName?? '';
-    this.email = this.user.email?? '';
-  } 
+    await this.loginService.getUser().then( (user) => {
+      this.nome = user.firstName?? '';
+      this.email = user.email?? '';
+    });
+  }
 
   public logout():void{
     this.loginService.logout();
