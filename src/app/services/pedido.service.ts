@@ -64,7 +64,8 @@ export class PedidoService {
     this.listarPedidos(idUsuario);
   }
 
-  public formatarData(data: Date){
+  public formatarData(data: any){
+    data = Date.parse(data);
     return `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
   }
 
