@@ -39,11 +39,12 @@ export class SignupPage implements OnInit {
   async signup():Promise<void>{
     if(this.password == this.confirmPassword){
       if(this.agreedTerms){
-        this.loginService.signup(this.firstName,this.lastName,this.email,this.password);
-        if(await this.loginService.checkUser()){
-        this.router.navigate(["/home/menu"]);
-        }
-      }
+        this.loginService.signup(this.firstName,this.lastName,this.email,this.password)
+        .then( () => {this.loginService.checkUser()
+          .then( (isOK) =>{
+            if(isOK){
+              this.router.navigate(["/home/menu"]);
+            }})})}
       else{
         console.log('falta aceitar os termos');
       }
