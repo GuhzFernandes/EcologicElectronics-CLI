@@ -21,14 +21,16 @@ export class HistoricoPage implements OnInit {
   constructor(private loginService: LoginService,private pedidoService: PedidoService) { }
 
   async ngOnInit() {
-    await this.loginService.getUser().then( (user) => {
+    this.loginService.getUser().then( (user) => {
       this.idUsuario = user.id;
+    }).then(()=>{
+      this.pedidoService.listarPedidos()
+      .then( ()=> { this.pedidoService.getPedidos()
+        .then( (pedidos) => { this.pedidosAtivos = pedidos;
+          console.log(this.pedidosAtivos);
+        })
+      })
     });
-    await this.pedidoService.listarPedidos()
-    .then( ()=> { this.pedidoService.getPedidos()
-      .then( (pedidos) => { this.pedidosAtivos = pedidos;
-        console.log(this.pedidosAtivos);
-    })});
   }
 
 }
