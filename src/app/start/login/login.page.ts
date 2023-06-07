@@ -21,18 +21,23 @@ export class LoginPage implements OnInit {
     this.password = '';
     this.showPassword = false;
     this.keepMeLoggedIn = false;
-    if(await this.loginService.checkUser()){
-      this.router.navigate(["/home/menu"]);
-    }
+    this.loginService.checkUser()
+    .then((isOk)=>{
+      if(isOk){
+        this.router.navigate(["/home/menu"]);
+      }
+    });
   }
 
   togglePassword():void{this.showPassword === true ? this.showPassword = false : this.showPassword = true}
 
   async login():Promise<void>{
-    this.loginService.login(this.email, this.password, this.keepMeLoggedIn);
-    if(await this.loginService.checkUser()){
-      this.router.navigate(["/home/menu"]);
-    }
+    this.loginService.login(this.email, this.password, this.keepMeLoggedIn)
+    .then(()=>{
+      this.loginService.checkUser()
+      .then((isOk) =>{
+        if( isOk ){
+          this.router.navigate(["/home/menu"]);
+      }});});
   }
-
 }
