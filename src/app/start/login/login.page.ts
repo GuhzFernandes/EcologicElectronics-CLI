@@ -38,6 +38,7 @@ export class LoginPage implements OnInit {
       .then((isOk) =>{
         if( isOk ){
           this.router.navigate(["/home/menu"]);
+          window.location.reload();
       }});});
   }
 }
