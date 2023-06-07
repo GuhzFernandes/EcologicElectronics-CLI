@@ -23,7 +23,7 @@ export class EditarPage implements OnInit {
       this.nome = user.firstName?? '';
       this.sobrenome = user.lastName??'';
       this.email = user.email?? '';
-      this.email = user.password?? '';
+      this.senha = user.password?? '';
       this.telefone = user.phoneNumber;
       this.cpf = user.cpf;
     });

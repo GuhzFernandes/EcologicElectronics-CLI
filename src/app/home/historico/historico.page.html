@@ -10,7 +10,7 @@
 <ion-content>
   <ion-segment [(ngModel)]="segmento" class="segment">
     <ion-segment-button value="confirmados" class="segment-button">
-      <ion-label>Pedidos Confirmados</ion-label>
+      <ion-label>Pedidos Ativos</ion-label>
     </ion-segment-button>
     <ion-segment-button value="historico" class="segment-button">
       <ion-label>Histórico</ion-label>
@@ -24,10 +24,10 @@
         <ion-label>Tipo</ion-label>
         <ion-label>Status</ion-label>
       </div>
-      <ion-item *ngFor="let pedido of pedidosConfirmados">
-        <ion-label>{{ pedido.data }}</ion-label>
-        <ion-label>{{ pedido.Tipo }}</ion-label>
-        <ion-button color="success">Aguard. pgto</ion-button>
+      <ion-item *ngFor="let pedido of pedidosAtivos">
+        <ion-label>{{ pedido.begindate }}</ion-label>
+        <ion-label>{{ pedido.tipolixo }}</ion-label>
+        <ion-button color="warning">{{pedido.statuspedido}}</ion-button>
       </ion-item>
     </ion-list>
   </div>
@@ -42,7 +42,7 @@
       <ion-item *ngFor="let pedido of historicoPedidos">
         <ion-label>{{ pedido.data }}</ion-label>
         <ion-label>{{ pedido.Tipo }}</ion-label>
-        <ion-button color="warning">coletado</ion-button>
+        <ion-button color="success">coletado</ion-button>
       </ion-item>
     </ion-list>
   </div>
