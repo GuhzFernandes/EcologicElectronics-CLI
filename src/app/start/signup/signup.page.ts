@@ -44,7 +44,6 @@ export class SignupPage implements OnInit {
           .then( (isOK) =>{
             if(isOK){
               this.router.navigate(["/home/menu"]);
-              window.location.reload();
             }})})}
       else{
         console.log('falta aceitar os termos');
