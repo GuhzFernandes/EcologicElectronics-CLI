@@ -33,12 +33,14 @@ export class PedidoService {
   public async listarPedidos(idUsuario?:number) {
     this.pedidos=[];
     const response = await fetch(`${this.api}/usuario/${idUsuario}`);
-    const data = await response.json();
-    for (const item of data){
-      item.begindate = this.formatarData(item.begindate);
-      this.pedidos.push(item);
-    }
-    this.storage.set('pedidos', this.pedidos);
+    await response.json()
+    .then( (data) => {
+      for (const item of data){
+        item.begindate = this.formatarData(item.begindate);
+        this.pedidos.push(item);
+      }
+      this.storage.set('pedidos', this.pedidos);
+    });
   }
 
   //Metodo POST
