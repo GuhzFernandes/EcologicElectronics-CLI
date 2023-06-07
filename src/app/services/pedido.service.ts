@@ -32,7 +32,7 @@ export class PedidoService {
   //Metodo GET - all
   public async listarPedidos(idUsuario?:number) {
     this.pedidos=[];
-    const response = await fetch(`${this.api}/${idUsuario}`);
+    const response = await fetch(`${this.api}/usuario/${idUsuario}`);
     const data = await response.json();
     for (const item of data){
       this.pedidos.push(item);
