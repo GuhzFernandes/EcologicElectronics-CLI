@@ -33,9 +33,8 @@ export class DadosColetaPage implements OnInit {
   }
 
   public confirmarPedido(){
-    //this.pedidoService.novoPedido(this.segmento,this.statusPagamento,this.statusPedido,this.tamanho,this.idUsuario);
-    //this.router.navigate(["/home/novo-pedido/pedido-confirmado"]);
-    this.pedidoService.listarPedidos(this.idUsuario);
+    this.pedidoService.novoPedido(this.segmento,this.statusPagamento,this.statusPedido,this.tamanho,this.idUsuario);
+    this.router.navigate(["/home/novo-pedido/pedido-confirmado"]);
   }
 
 }

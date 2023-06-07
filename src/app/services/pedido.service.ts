@@ -24,7 +24,7 @@ export class PedidoService {
     this.storage.set('pedidos',this.pedidos);
   }
 
-  public async getUser() {
+  public async getPedidos():Promise<IOrder[]> {
     this.pedidos = await this.storage.get('pedidos');
     return this.pedidos;
   }
@@ -32,9 +32,11 @@ export class PedidoService {
   //Metodo GET - all
   public async listarPedidos(idUsuario?:number) {
     this.pedidos=[];
-    const response = await fetch(`${this.api}/usuario/${idUsuario}`);
+    const response = await fetch(`${this.api}/${idUsuario}`);
     const data = await response.json();
-    console.log(data);
+    for (const item of data){
+      this.pedidos.push(item);
+    }
     this.storage.set('pedidos', this.pedidos);
   }
 
@@ -55,8 +57,8 @@ export class PedidoService {
         'Content-type': 'application/json; charset=UTF-8',
       }
     });
-    console.log(await response.json());
-    //this.listarPedidos(idUsuario);
+    console.log(`response: ${response}`);
+    this.listarPedidos(idUsuario);
   }
 
 

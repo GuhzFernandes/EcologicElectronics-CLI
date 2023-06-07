@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import IOrder from 'src/app/interfaces/IOrder';
+import { LoginService } from 'src/app/services/login.service';
+import { PedidoService } from 'src/app/services/pedido.service';
 
 @Component({
   selector: 'app-historico',
@@ -7,21 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoricoPage implements OnInit {
   segmento = 'confirmados';
+  public idUsuario?: number; 
 
-  pedidosConfirmados = [
+  public pedidosAtivos:IOrder[] = [];
+  public historicoPedidos = [
     { Tipo: 'Pequeno', data: '01/01/2023' },
-    { Tipo: 'Pequeno', data: '01/01/2023' },
-    { Tipo: 'Pequeno', data: '01/01/2023' },
-  ];
-
-  historicoPedidos = [
-    { Tipo: 'Grande', data: '01/01/2023' },
-    { Tipo: 'Grande', data: '01/01/2023' },
+    { Tipo: 'Médio', data: '01/01/2023' },
     { Tipo: 'Grande', data: '01/01/2023' },
   ];
-  constructor() { }
+  constructor(private loginService: LoginService,private pedidoService: PedidoService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.loginService.getUser().then( (user) => {
+      this.idUsuario = user.id;
+    });
+    await this.pedidoService.listarPedidos()
+    .then( ()=> { this.pedidoService.getPedidos()
+      .then( (pedidos) => { this.pedidosAtivos = pedidos
+    })});
   }
 
 }
