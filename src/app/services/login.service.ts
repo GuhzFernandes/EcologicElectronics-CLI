@@ -82,13 +82,13 @@ export class LoginService {
     const response = await fetch(`${this.api}}`, {
       method: 'PUT',
       body: JSON.stringify({
-        id: this.user.id,
-        nome: `${this.user.firstName}`,
-        sobrenome: `${this.user.lastName}`,
-        email: `${this.user.email}`,
-        senha: `${this.user.password}`,
-        telefone: this.user.phoneNumber,
-        cpf: this.user.cpf
+        'id': this.user.id,
+        'nome': `${this.user.firstName}`,
+        'sobrenome': `${this.user.lastName}`,
+        'email': `${this.user.email}`,
+        'senha': `${this.user.password}`,
+        'telefone': this.user.phoneNumber,
+        'cpf': this.user.cpf
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
