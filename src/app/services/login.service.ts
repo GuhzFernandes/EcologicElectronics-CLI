@@ -79,7 +79,7 @@ export class LoginService {
       cpf: cpf
     };
     this.storage.set('user', this.user);
-    const response = await fetch(`${this.api}`, {
+    const response = await fetch(`${this.api}}`, {
       method: 'PUT',
       body: JSON.stringify({
         id: this.user.id,
@@ -109,9 +109,12 @@ export class LoginService {
   }
 
   public async getUser() {
+    /*
     this.user = await this.storage.get('user');
     console.log(this.user);
     return this.user;
+    */
+    return this.storage.get('user');
   }
 
   public async startUser() {
