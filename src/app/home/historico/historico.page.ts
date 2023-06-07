@@ -21,7 +21,7 @@ export class HistoricoPage implements OnInit {
   constructor(private loginService: LoginService,private pedidoService: PedidoService) { }
 
   async ngOnInit() {
-    this.loginService.getUser().then( (user) => {
+    await this.loginService.getUser().then( (user) => {
       this.idUsuario = user.id;
     }).then(()=>{
       this.pedidoService.listarPedidos(this.idUsuario)
