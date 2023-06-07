@@ -35,6 +35,7 @@ export class PedidoService {
     const response = await fetch(`${this.api}/usuario/${idUsuario}`);
     const data = await response.json();
     for (const item of data){
+      item.begindate = this.formatarData(item.begindate);
       this.pedidos.push(item);
     }
     this.storage.set('pedidos', this.pedidos);
@@ -61,6 +62,8 @@ export class PedidoService {
     this.listarPedidos(idUsuario);
   }
 
-
+  public formatarData(data: Date){
+    return `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
+  }
 
 }

@@ -5,5 +5,5 @@ export default interface IOrder {
     statuspedido?: string;
     statuspagamento?: string;
     formapagamento?: string;
-    begindate?: Date;
+    begindate?: any;
 }
