@@ -79,16 +79,16 @@ export class LoginService {
       cpf: cpf
     };
     this.storage.set('user', this.user);
-    const response = await fetch(`${this.api}}`, {
+    const response = await fetch(`${this.api}`, {
       method: 'PUT',
       body: JSON.stringify({
-        'id': this.user.id,
-        'nome': `${this.user.firstName}`,
-        'sobrenome': `${this.user.lastName}`,
-        'email': `${this.user.email}`,
-        'senha': `${this.user.password}`,
-        'telefone': this.user.phoneNumber,
-        'cpf': this.user.cpf
+        id: this.user.id,
+        nome: `${this.user.firstName}`,
+        sobrenome: `${this.user.lastName}`,
+        email: `${this.user.email}`,
+        senha: `${this.user.password}`,
+        telefone: this.user.phoneNumber,
+        cpf: this.user.cpf
     }),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
