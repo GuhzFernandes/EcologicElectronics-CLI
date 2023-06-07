@@ -26,7 +26,8 @@ export class HistoricoPage implements OnInit {
     });
     await this.pedidoService.listarPedidos()
     .then( ()=> { this.pedidoService.getPedidos()
-      .then( (pedidos) => { this.pedidosAtivos = pedidos
+      .then( (pedidos) => { this.pedidosAtivos = pedidos;
+        console.log(this.pedidosAtivos);
     })});
   }
 

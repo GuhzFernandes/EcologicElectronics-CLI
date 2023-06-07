@@ -16,7 +16,7 @@ export class PerfilPage implements OnInit {
   public email: string = '';
 
   async ngOnInit() {
-    await this.loginService.getUser().then( (user) => {
+    this.loginService.getUser().then( (user) => {
       this.nome = user.firstName?? '';
       this.email = user.email?? '';
     });
