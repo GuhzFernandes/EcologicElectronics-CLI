@@ -1,0 +1,74 @@
+.tituloDica {
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+  }
+  
+  .Imagem_fluxo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .botaoVoltar {   
+    --background:none;
+    border: none;
+    --color: #030000;
+  }
+  
+  .Primeiro_Titulo {
+    text-align: left;
+    display: grid;
+    font-weight: bold;
+    color: #030000;
+    border-radius: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+  }
+  .Primeiro_Texto {
+    text-align: left;
+    display: grid;
+    color: #030000;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+  }
+  .Segundo_Titulo {
+    text-align: right;
+    display: grid;
+    font-weight: bold;
+    color: #030000;
+    border-radius: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 10px;
+  }
+  .Segundo_Texto {
+    text-align: right;
+    display: grid;
+    color: #030000;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 10px;
+  }
+  .Terceiro_Titulo {
+    text-align: left;
+    display: grid;
+    font-weight: bold;
+    color: #030000;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+  }
+  .Terceiro_Texto {
+    text-align: left;
+    display: grid;
+    color: #030000;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+  }

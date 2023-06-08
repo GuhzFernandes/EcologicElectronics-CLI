@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  
+  <button id="backButton" routerLink="/start"><ion-icon name="arrow-back-outline"></ion-icon></button>
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div id="logo">
+    <picture>
+      <img src="../../assets/logo.png" alt="logo" unselectable="on" width="20%">
+    </picture>
+    <p>Ecologic</p>
+    <p>Electronics</p>
+  </div>
+
+  <div id="login">
+    <p id="loginLabel">Login</p>
+
+    <div id="loginFields">
+      
+      <div class="loginInputs">
+        <input type="email" id="emailInput" placeholder="Email" [(ngModel)]="email">
+      </div>
+      
+      <div class="loginInputs">
+        <input type="{{ showPassword === false ? 'password' : 'text'}}" id="passwordInput" placeholder="Senha" [(ngModel)]="password">
+        <button id="passwordButton" (click)="togglePassword();"><ion-icon id="passwordButtonIcon" name="{{showPassword === true ? 'eye-off-outline' : 'eye-outline'}}"></ion-icon></button>
+      </div>
+                  
+    </div>
+
+    <div id="checkboxAndLink">
+      <ion-checkbox labelPlacement="end" id='keepLoggedIn' [(ngModel)]="keepMeLoggedIn">Lembrar de mim</ion-checkbox>
+      <div class="redirectLink" routerLink="/signup">Esqueceu a senha?</div>
+    </div>
+    
+    <div><button id="loginButton" (click)="login()">Entrar</button></div>
+    <div class="redirectLink" id="signup" routerLink="/signup">Não possui conta? Crie uma agora!</div>
+    
+  </div>
+
+
+</ion-content>

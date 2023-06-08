@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="profile-container">
+    <div class="profile-header">
+      <ion-avatar class="profile-avatar">
+        <img src="../../../assets/UserCircle.png" alt="Foto do Usuário">
+      </ion-avatar>
+      <div class="profile-info">
+        <h2> {{nome}} </h2>
+        <p> {{email}} </p>
+        <ion-button class="profile-exit" fill="clear" (click)="logout()"><ion-icon name="exit-outline"></ion-icon> Sair</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-buttons" routerLink="./editar">
+    <ion-icon name="create-outline"></ion-icon>
+    <a class="">Editar Perfil</a>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </div>
+
+  <!--
+  <div class="profile-buttons" routerLink="./cartao">
+    <ion-icon name="card-outline"></ion-icon>
+    <a class="">Dados do Cartão</a>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </div>
+  -->
+
+  <div class="profile-buttons" routerLink="./ajuda">
+    <ion-icon name="help-circle-outline"></ion-icon>
+    <a class="">Central de Ajuda</a>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </div>
+
+  <div>
+    <img src="../../../assets/config.png">
+  </div>
+</ion-content>

@@ -1,0 +1,41 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+    img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+}
+
+.container-button {
+    margin: 20px;
+}
+
+.button-container {
+    padding: 5px;
+}
+
+
+.edit-list {
+    margin: 5px;
+}
+
+.edit-list>ion-list >ion-item >ion-label {
+    padding-top: 10px;
+}
+
+.edit-inputs {
+    text-align: left;
+}

@@ -1,0 +1,274 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home/novo">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Dados da Coleta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-progress-bar value="0.50"  color="success"></ion-progress-bar>
+
+  <div class="text-container">
+    <p>Insira os dados do endereço e tamanho da coleta: </p>
+  </div>
+
+  <ion-card-content>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">CEP:</ion-label>
+      <ion-input type="text" class="input"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Logradouro:</ion-label>
+      <ion-input type="text" class="input"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Bairro:</ion-label>
+      <ion-input type="text" class="input"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Complemento:</ion-label>
+      <ion-input type="text" class="input"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Número:</ion-label>
+      <ion-input type="text" class="input"></ion-input>
+    </ion-item>
+
+    <ion-list-header>Tamanho da Coleta</ion-list-header>
+
+    <ion-radio-group [(ngModel)]="tamanho">
+
+      <ion-item lines="none">
+        <ion-radio slot="start" value="pequeno"></ion-radio>
+        <ion-label>Pequeno</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-radio slot="start" value="medio"></ion-radio>
+        <ion-label>Médio</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-radio slot="start" value="grande"></ion-radio>
+        <ion-label>Grande</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-radio slot="start" value="extraGrande"></ion-radio>
+        <ion-label>Extra-Grande</ion-label>
+      </ion-item>
+
+    </ion-radio-group>
+
+    <ion-segment [(ngModel)]="segmento" class="segment">
+      <ion-segment-button value="pix" class="segment-button">
+        <ion-label>Pix</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="cartaoCredito" class="segment-button">
+        <ion-label>Crédito</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="cartaoDebito" class="segment-button">
+        <ion-label>Debito</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="boleto" class="segment-button">
+        <ion-label>Boleto</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <!--Metodo de pagamento Pix \/-->
+    <div *ngIf="segmento === 'pix'" class="pix">
+      <div class="title">
+        <strong>Pagamento por Pix</strong>
+      </div>
+      <p>Escaneie o QRCode ou copie o código para completar o pagamento:</p>
+      <div class="img">
+        <img src="../../../../assets/QRCode.png">
+      </div>
+      <p>Código Pix: 0000kcsadajkslk312l14j87423n8 <ion-icon name="copy-outline"></ion-icon></p>
+
+      <div class="resumo">
+        <div class="pagamento">
+          <strong>Resumo</strong>
+        </div>
+        <ion-grid>
+          <ion-row class="ion-justify-content-between">
+            <ion-col size="3">Coleta</ion-col>
+            <ion-col size="3"> R$20,00 </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+    </div>
+
+    <!--Metodo de pagamento Cartão de crédito \/-->
+    <div *ngIf="segmento === 'cartaoCredito'" class="cardcred">
+
+      <div class="title">
+        <strong>Pagamento por Crédito</strong>
+      </div>
+      <p>Registre o cartão para completar o pagamento:</p>
+
+      <div class="formcard">
+        <ion-grid>
+          <ion-row class="ion-justify-content-end">
+            <ion-col size="2"><img src="../../../../assets/logo.png" class="logo"></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>{{this.numcard}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="auto">{{this.validcard}}</ion-col>
+            <ion-col>{{this.cvvcard}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>{{this.namecard}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Nome no cartão:</ion-label>
+              <ion-input type="text" [(ngModel)]="namecard"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">N° do cartão:</ion-label>
+              <ion-input type="number" [(ngModel)]="numcard"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="auto">
+            <ion-item>
+              <ion-label position="stacked">Validade:</ion-label>
+              <ion-input type="number" [(ngModel)]="validcard"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Cvv:</ion-label>
+              <ion-input type="number" [(ngModel)]="cvvcard"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="resumo">
+        <div class="pagamento">
+          <strong>Resumo</strong>
+        </div>
+        <ion-grid>
+          <ion-row class="ion-justify-content-between">
+            <ion-col size="3">Coleta</ion-col>
+            <ion-col size="3"> R$20,00 </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <!--Metodo de pagamento Cartão de debito \/-->
+    <div *ngIf="segmento === 'cartaoDebito'" class="carddebit">
+
+      <div class="title">
+        <strong>Pagamento por Débito</strong>
+      </div>
+      <p>Registre o cartão para completar o pagamento:</p>
+
+      <div class="formcard">
+        <ion-grid>
+          <ion-row class="ion-justify-content-end">
+            <ion-col size="2"><img src="../../../../assets/logo.png" class="logo"></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>{{this.numcard}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="auto">{{this.validcard}}</ion-col>
+            <ion-col>{{this.cvvcard}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>{{this.namecard}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Nome no cartão:</ion-label>
+              <ion-input type="text" [(ngModel)]="namecard"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">N° do cartão:</ion-label>
+              <ion-input type="number" [(ngModel)]="numcard"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="auto">
+            <ion-item>
+              <ion-label position="stacked">Validade:</ion-label>
+              <ion-input type="number" [(ngModel)]="validcard"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Cvv:</ion-label>
+              <ion-input type="number" [(ngModel)]="cvvcard"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      <div class="resumo">
+        <div class="pagamento">
+          <strong>Resumo</strong>
+        </div>
+        <ion-grid>
+          <ion-row class="ion-justify-content-between">
+            <ion-col size="3">Coleta</ion-col>
+            <ion-col size="3"> R$20,00 </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <!--Metodo de pagamento boleto \/-->
+    <div *ngIf="segmento === 'boleto'" class="boleto">
+
+      <div class="title">
+        <strong>Pagamento por boleto</strong>
+      </div>
+      <p>O seu boleto será gerado e enviado para o e-mail cadastrado:</p>
+
+      <div class="img">
+        <img src="../../../../assets/boleto.png">
+      </div>
+    </div>
+
+  </ion-card-content>
+
+  <ion-button color="success" expand="full"  (click)="confirmarPedido()">Confirmar</ion-button>
+
+</ion-content>
