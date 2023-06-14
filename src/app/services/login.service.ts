@@ -67,8 +67,9 @@ export class LoginService {
     this.storage.set('keepLogin', true);
   }
 
-  //Metodo PUT
+  //Metodo PUT - Update
   public async update(nome: string, sobrenome: string, email: string, senha: string, telefone?: number, cpf?: number) {
+    this.user = await this.getUser();
     this.user = {
       id: this.user.id,
       firstName: nome,
@@ -78,8 +79,8 @@ export class LoginService {
       phoneNumber: telefone,
       cpf: cpf
     };
-    this.storage.set('user', this.user);
-    const response = await fetch(`${this.api}}`, {
+    console.log(this.user);
+    const response = await fetch(`${this.api}`, {
       method: 'PUT',
       body: JSON.stringify({
         id: this.user.id,
@@ -94,7 +95,8 @@ export class LoginService {
       'Content-type': 'application/json; charset=UTF-8',
     },
     });
-    console.log(await response.json());
+    console.log(await response.status);
+    this.storage.set('user', this.user);
   }
 
   public async checkUser(): Promise<boolean> {

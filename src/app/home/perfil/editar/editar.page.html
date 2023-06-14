@@ -9,6 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
   <div class="profile-picture">
     <img src="../../../../assets/UserCircle.png" alt="Foto do Usuário">
@@ -34,11 +35,11 @@
       </ion-item>
       <ion-item>
         <ion-label class="edit-inputs" position="stacked">Telefone:</ion-label>
-        <ion-input class="edit-inputs" [(ngModel)]="telefone"></ion-input>
+        <ion-input #telefoneInput class="edit-inputs" [(ngModel)]="telefone"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label class="edit-inputs" position="stacked">CPF:</ion-label>
-        <ion-input class="edit-inputs" [(ngModel)]="cpf"></ion-input>
+        <ion-input #cpfInput class="edit-inputs" [(ngModel)]="cpf" name="cpf" type="text"></ion-input>
       </ion-item>
     </ion-list>
   </div>
