@@ -9,6 +9,41 @@ import { PedidoService } from 'src/app/services/pedido.service';
   styleUrls: ['./dados-coleta.page.scss'],
 })
 export class DadosColetaPage implements OnInit {
+
+  formatarCVV(cvv: string): string {
+    // Remove todos os caracteres que não sejam dígitos
+    const numeros = cvv.replace(/\D/g, '');
+  
+    // Limita o valor para no máximo 3 dígitos
+    const cvvFormatado = numeros.slice(0, 3);
+  
+    return cvvFormatado;
+  }
+
+  formatarNumCard(numcard: string): string {
+    // Remove todos os caracteres não numéricos
+    const cartao = numcard.replace(/\D/g, '');
+
+    // Formata o número do cartão
+    const numEditado = cartao.replace(/(\d{4})(\d{4})(\d{4})(\d{4})/, '$1 $2 $3 $4');
+
+    const cartaoFormatado = numEditado.slice(0, 19);
+
+    return cartaoFormatado;
+  }
+
+  formatarValidCard(validcard: string): string {
+    // Remove todos os caracteres não numéricos
+    const validadecard = validcard.replace(/\D/g, '');
+
+    // Formata o número do cartão
+    const validadeEditado = validadecard.replace(/(\d{2})(\d{2})/, '$1/$2');
+
+    const validadeFormatado = validadeEditado.slice(0, 5);
+
+    return validadeFormatado;
+  }
+
   //Definindo o segmento padrão para ser exibido
   public segmento: string = 'pix';
   public tamanho: string = '';

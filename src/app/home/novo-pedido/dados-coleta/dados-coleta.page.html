@@ -148,7 +148,7 @@
           <ion-col>
             <ion-item>
               <ion-label position="stacked">N° do cartão:</ion-label>
-              <ion-input type="number" [(ngModel)]="numcard"></ion-input>
+              <ion-input type="text" [(ngModel)]="numcard" (input)="numcard = formatarNumCard(numcard)"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -156,13 +156,13 @@
           <ion-col size="auto">
             <ion-item>
               <ion-label position="stacked">Validade:</ion-label>
-              <ion-input type="number" [(ngModel)]="validcard"></ion-input>
+              <ion-input type="text" [(ngModel)]="validcard" (input)="validcard = formatarValidCard(validcard)"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
               <ion-label position="stacked">Cvv:</ion-label>
-              <ion-input type="number" [(ngModel)]="cvvcard"></ion-input>
+              <ion-input type="text" [(ngModel)]="cvvcard" (input)="cvvcard = formatarCVV(cvvcard)"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -206,7 +206,6 @@
           </ion-row>
         </ion-grid>
       </div>
-
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -220,7 +219,7 @@
           <ion-col>
             <ion-item>
               <ion-label position="stacked">N° do cartão:</ion-label>
-              <ion-input type="number" [(ngModel)]="numcard"></ion-input>
+              <ion-input type="text" [(ngModel)]="numcard" (input)="numcard = formatarNumCard(numcard)"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -228,13 +227,13 @@
           <ion-col size="auto">
             <ion-item>
               <ion-label position="stacked">Validade:</ion-label>
-              <ion-input type="number" [(ngModel)]="validcard"></ion-input>
+              <ion-input type="text" [(ngModel)]="validcard" (input)="validcard = formatarValidCard(validcard)"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
             <ion-item>
               <ion-label position="stacked">Cvv:</ion-label>
-              <ion-input type="number" [(ngModel)]="cvvcard"></ion-input>
+              <ion-input type="text" [(ngModel)]="cvvcard" (input)="cvvcard = formatarCVV(cvvcard)"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
