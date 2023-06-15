@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-progress-bar value="0.50"  color="success"></ion-progress-bar>
+  <ion-progress-bar value="0.50" color="success"></ion-progress-bar>
 
   <div class="text-container">
     <p>Insira os dados do endereço e tamanho da coleta: </p>
@@ -20,22 +20,22 @@
 
     <ion-item lines="none">
       <ion-label position="stacked">CEP:</ion-label>
-      <ion-input type="text" class="input"></ion-input>
+      <ion-input type="text" class="input" [(ngModel)]="cep" (ionInput)="buscarCEP()"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label position="stacked">Logradouro:</ion-label>
-      <ion-input type="text" class="input"></ion-input>
+      <ion-input type="text" class="input" [(ngModel)]="logradouro"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label position="stacked">Bairro:</ion-label>
-      <ion-input type="text" class="input"></ion-input>
+      <ion-input type="text" class="input" [(ngModel)]="bairro"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
       <ion-label position="stacked">Complemento:</ion-label>
-      <ion-input type="text" class="input"></ion-input>
+      <ion-input type="text" class="input" [(ngModel)]="complemento"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
@@ -156,7 +156,8 @@
           <ion-col size="auto">
             <ion-item>
               <ion-label position="stacked">Validade:</ion-label>
-              <ion-input type="text" [(ngModel)]="validcard" (input)="validcard = formatarValidCard(validcard)"></ion-input>
+              <ion-input type="text" [(ngModel)]="validcard"
+                (input)="validcard = formatarValidCard(validcard)"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
@@ -227,7 +228,8 @@
           <ion-col size="auto">
             <ion-item>
               <ion-label position="stacked">Validade:</ion-label>
-              <ion-input type="text" [(ngModel)]="validcard" (input)="validcard = formatarValidCard(validcard)"></ion-input>
+              <ion-input type="text" [(ngModel)]="validcard"
+                (input)="validcard = formatarValidCard(validcard)"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col>
@@ -268,6 +270,6 @@
 
   </ion-card-content>
 
-  <ion-button color="success" expand="full"  (click)="confirmarPedido()">Confirmar</ion-button>
+  <ion-button color="success" expand="full" (click)="confirmarPedido()">Confirmar</ion-button>
 
 </ion-content>
