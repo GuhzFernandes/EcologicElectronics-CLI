@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonInput } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import Inputmask from 'inputmask';
 
 @Component({
@@ -20,7 +21,7 @@ export class EditarPage implements OnInit {
   public telefone?: number;
   public cpf?: number;
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private router: Router, private loginService: LoginService, private notification: NotificationService) {}
 
   async ngOnInit() {
     await this.loginService.getUser().then((user) => {
@@ -52,14 +53,36 @@ export class EditarPage implements OnInit {
     async save(): Promise<void> {
       const cpfNumber = this.cpf ? parseInt(this.cpf.toString().replace(/\D/g, ''), 10) : 0;
       const telefoneNumber = this.telefone ? parseInt(this.telefone.toString().replace(/\D/g, ''), 10) : 0;
-      this.loginService.update(
-        this.nome,
-        this.sobrenome,
-        this.email,
-        this.senha,
-        telefoneNumber,
-        cpfNumber
-      );
-      this.router.navigate(['/home/perfil']);
+      if(this.nome == '' || this.sobrenome == '' || this.email || this.senha == ''){
+        this.notification.longError('Campo obrigatório está vazio!\nVerifique os campos de nome, sobrenome, email e senha.');
       }
-}
+      else if(!(this.telefone != null && this.telefone > 11000000000) || this.telefone != null){
+        this.notification.defaultError('Numero de telefone invalido!');
+      }
+      else if(!(this.cpf != null && this.cpf >= 1) || this.telefone != null){
+        this.notification.defaultError('CPF invalido!');
+      }
+      else{
+        this.loginService.update(
+          this.nome,
+          this.sobrenome,
+          this.email,
+          this.senha,
+          telefoneNumber,
+          cpfNumber
+        );
+        this.router.navigate(['/home/perfil']);
+      }
+    }
+  }
+  /*const cpfNumber = this.cpf ? parseInt(this.cpf.toString().replace(/\D/g, ''), 10) : 0;
+  const telefoneNumber = this.telefone ? parseInt(this.telefone.toString().replace(/\D/g, ''), 10) : 0;
+  this.loginService.update(
+    this.nome,
+    this.sobrenome,
+    this.email,
+    this.senha,
+    telefoneNumber,
+    cpfNumber
+  );
+  this.router.navigate(['/home/perfil']);*/

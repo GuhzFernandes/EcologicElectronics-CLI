@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular'
 import IUser from '../interfaces/IUser';
 import { HttpClient } from '@angular/common/http';
-import { observable } from 'rxjs';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LoginService {
   public storage: Storage;
   private api: string = 'http://localhost:8080/user'
 
-  constructor(storage: Storage, private http: HttpClient) {
+  constructor(storage: Storage, private http: HttpClient, private notification: NotificationService) {
     this.storage = storage;
     this.storage.create();
     this.storage.get('user');
@@ -80,23 +80,37 @@ export class LoginService {
       cpf: cpf
     };
     console.log(this.user);
-    const response = await fetch(`${this.api}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        id: this.user.id,
-        nome: `${this.user.firstName}`,
-        sobrenome: `${this.user.lastName}`,
-        email: `${this.user.email}`,
-        senha: `${this.user.password}`,
-        telefone: this.user.phoneNumber,
-        cpf: this.user.cpf
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    });
-    console.log(await response.status);
-    this.storage.set('user', this.user);
+    try {
+      const response = await fetch(`${this.api}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          id: this.user.id,
+          nome: `${this.user.firstName}`,
+          sobrenome: `${this.user.lastName}`,
+          email: `${this.user.email}`,
+          senha: `${this.user.password}`,
+          telefone: this.user.phoneNumber,
+          cpf: this.user.cpf
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      });
+      if(await response.status == 200){
+        console.log(await response.status);
+        this.storage.set('user', this.user);
+        this.notification.defaultSuccess('Perfil Atualizado!');
+      }
+      else{
+        console.log(await response.status);
+        this.notification.longError('Erro ao atualizar os dados, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao atualizar os dados, tente novamente mais tarde!');
+    }
+    
+    
   }
 
   public async checkUser(): Promise<boolean> {
