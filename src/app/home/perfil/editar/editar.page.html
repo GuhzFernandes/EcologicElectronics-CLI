@@ -53,7 +53,7 @@
         </ion-item>
       </ion-list>
       <div class="container-button">
-        <ion-button expand="half" color="success" class="button-container" (click)="saveUser()">Salvar</ion-button>
+        <ion-button expand="half" color="success" class="button-container" (click)="saveUser()">Atualizar Perfil</ion-button>
       </div>
     </div>
     
@@ -87,7 +87,10 @@
     </div>
     
     <div *ngIf="alterar === 'deletar'" class="edit-list">
-      <div class="container-button">
+      <div class="container-delete-button">
+        <div class="title">
+          <strong>Deseja deletar a sua conta permanentemente?</strong>
+        </div>
         <ion-button expand="half" color="danger" class="button-container" (click)="remove()">Deletar conta</ion-button>
       </div>
     </div>
