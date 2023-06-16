@@ -48,6 +48,25 @@ export class LoginService {
     }
   }
 
+  //Metodo GET - Check se email está existente
+  public async checkEmail(email: string) {
+    try {
+      const response = await fetch(`${this.api}/esqueceusenha?email=${email}`);
+      console.log(response.status);
+      if (response.body){
+        return true;
+      }
+      else{
+        this.notification.longError('Erro ao verificar email, tente novamente mais tarde!');
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao verificar email, tente novamente mais tarde!');
+      return false;
+    }
+  }
+
   //Metodo POST
   public async signup(firstName: string, lastName: string, email: string, password: string) {
     try {
