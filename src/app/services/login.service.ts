@@ -39,6 +39,9 @@ export class LoginService {
         this.storage.set('user', this.user);
         this.storage.set('keepLogin', keepMeLoggedIn);
       }
+      else if(response.status == 401){
+        this.notification.longError('Usuario não cadastrado!');
+      }
       else{
         this.notification.longError('Erro ao efetuar login, tente novamente mais tarde!');
       }
