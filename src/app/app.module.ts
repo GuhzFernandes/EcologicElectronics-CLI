@@ -14,7 +14,6 @@ import { LoginService } from './services/login.service';
 import { PedidoService } from './services/pedido.service';
 import { NotificationService } from './services/notification.service';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(),HttpClientModule],

@@ -30,7 +30,9 @@
     "@ionic/storage-angular": "^4.0.0",
     "inputmask": "^5.0.8",
     "ionicons": "^7.0.0",
+    "ngx-mask": "^16.1.5",
     "rxjs": "~7.8.0",
+    "text-mask-core": "^5.1.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
