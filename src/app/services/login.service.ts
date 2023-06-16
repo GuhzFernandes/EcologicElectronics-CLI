@@ -84,7 +84,11 @@ export class LoginService {
       });
       console.log(response.status);
       if(response.status == 201){
-        console.log('Perfil criado!')
+        console.log('Perfil criado!');
+        await this.login(email,password,false)
+        .then(()=>{
+          console.log('usuario conectado!');
+        })
       }
       else{
         this.notification.longError('Erro ao efetuar cadastro, tente novamente mais tarde!');

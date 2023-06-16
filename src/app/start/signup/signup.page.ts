@@ -49,14 +49,11 @@ export class SignupPage implements OnInit {
       }
     else{
       this.loginService.signup(this.firstName,this.lastName,this.email,this.password)
-        .then( () => {
-          this.loginService.login(this.email, this.password, false)
-          .then( () => {this.loginService.checkUser()
-            .then( (isOK) =>{
-              if(isOK){
-                this.router.navigate(["/home/menu"]);
-              }})})
-        })
+      .then( () => {this.loginService.checkUser()
+        .then( (isOK) =>{
+          if(isOK){
+            this.router.navigate(["/home/menu"]);
+          }})})
     }
   }
 
