@@ -48,12 +48,15 @@ export class SignupPage implements OnInit {
       this.notification.defaultError('É necesssario aceitar os termos para se cadastrar!');
       }
     else{
-      await this.loginService.signup(this.firstName,this.lastName,this.email,this.password)
-        .then( () => {this.loginService.checkUser()
-          .then( (isOK) =>{
-            if(isOK){
-              this.router.navigate(["/home/menu"]);
-            }})})
+      this.loginService.signup(this.firstName,this.lastName,this.email,this.password)
+        .then( () => {
+          this.loginService.login(this.email, this.password, false)
+          .then( () => {this.loginService.checkUser()
+            .then( (isOK) =>{
+              if(isOK){
+                this.router.navigate(["/home/menu"]);
+              }})})
+        })
     }
   }
 
