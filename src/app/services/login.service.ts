@@ -90,6 +90,9 @@ export class LoginService {
           console.log('usuario conectado!');
         })
       }
+      else if(response.status == 400){
+        this.notification.longError('Email já cadastrado!');
+      }
       else{
         this.notification.longError('Erro ao efetuar cadastro, tente novamente mais tarde!');
       }
