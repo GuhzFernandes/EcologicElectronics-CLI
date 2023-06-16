@@ -46,12 +46,14 @@ export class PedidoService {
           this.storage.set('pedidos', this.pedidos);
         });
       }
+      else if(response.status){
+      }
       else{
-        this.notification.longError('Erro ao carregar pedidos antigos, tente novamente mais tarde!');
+        this.notification.longError('Erro ao carregar pedidos, tente novamente mais tarde!');
       }      
     } catch (error) {
       console.log(error);
-      this.notification.longError('Erro ao carregar pedidos antigos, tente novamente mais tarde!');
+      this.notification.longError('Erro ao carregar pedidos, tente novamente mais tarde!');
     }
   }
 
