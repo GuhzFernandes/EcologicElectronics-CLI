@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import { PedidoService } from 'src/app/services/pedido.service';
+import { PedidoService } from 'src/app/services/pedido.service'
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-dados-coleta',
@@ -48,6 +49,7 @@ export class DadosColetaPage implements OnInit {
   public logradouro = '';
   public bairro = '';
   public complemento = '';
+  public numEndereco = '';
 
   //Definindo o segmento padrão para ser exibido
   public segmento: string = 'pix';
@@ -63,7 +65,7 @@ export class DadosColetaPage implements OnInit {
   public validcard: string = '';
   public cvvcard: string = '';
 
-  constructor(private router: Router, private loginService: LoginService, private pedidoService: PedidoService) {
+  constructor(private router: Router, private loginService: LoginService, private pedidoService: PedidoService, private notification: NotificationService) {
   }
 
   async ngOnInit() {
@@ -73,8 +75,21 @@ export class DadosColetaPage implements OnInit {
   }
 
   public confirmarPedido() {
-    this.pedidoService.novoPedido(this.segmento, this.statusPagamento, this.statusPedido, this.tamanho, this.idUsuario);
-    this.router.navigate(["/home/novo-pedido/pedido-confirmado"]);
+    if(this.cep == '' || this.logradouro == '' || this.bairro == '' || this.numEndereco == ''){
+      this.notification.defaultError('Campo obrigatório de endereço vazio! Verifique os dados de endereço');
+    }
+    else if(this.tamanho == '' ){
+      this.notification.defaultError('Campo obrigatório de coleta vazio! Escolha o tamanho da coleta');
+    }
+    else{
+      if( (this.segmento == 'cartaoCredito' || this.segmento == 'cartaoDebito') && (this.namecard == '' || this.numcard == '' || this.validcard == '' || this.cvvcard == '')){
+        this.notification.defaultError('Campo obrigatório de pagamento vazio! Verifique os dados do cartão');
+      }
+      else{
+        this.pedidoService.novoPedido(this.segmento, this.statusPagamento, this.statusPedido, this.tamanho, this.idUsuario);
+        this.router.navigate(["/home/novo-pedido/pedido-confirmado"]);
+      }
+    }
   }
 
   buscarCEP() {
@@ -84,7 +99,6 @@ export class DadosColetaPage implements OnInit {
         .then(data => {
           this.logradouro = data.logradouro;
           this.bairro = data.bairro;
-          this.complemento = data.complemento;
         })
         .catch(error => {
           console.error(error);
@@ -92,7 +106,6 @@ export class DadosColetaPage implements OnInit {
     } else {
       this.logradouro = '';
       this.bairro = '';
-      this.complemento = '';
     }
   }
 }
