@@ -19,7 +19,7 @@ export class LoginService {
 
   }
 
-  //Metodo GET
+  //Metodo GET - Login
   public async login(email: string, password: string, keepMeLoggedIn: boolean) {
     try {
       const response = await fetch(`${this.api}/login?email=${email}&senha=${password}`);
@@ -67,7 +67,7 @@ export class LoginService {
     }
   }
 
-  //Metodo POST
+  //Metodo POST - Cadastro
   public async signup(firstName: string, lastName: string, email: string, password: string) {
     try {
       const response = await fetch(`${this.api}/cadastro`, {
@@ -96,7 +96,7 @@ export class LoginService {
     
   }
 
-  //Metodo PUT - Update
+  //Metodo PUT - Atualização de informações de usuario
   public async updateUser(nome: string, sobrenome: string, email: string, telefone?: number, cpf?: number) {
     this.user = await this.getUser();
     this.user = {
@@ -141,7 +141,7 @@ export class LoginService {
     
   }
 
-  //Metodo PUT - Update
+  //Metodo PUT - atualização de senha
   public async updatePassword(senha: string) {
     this.user = await this.getUser();
     this.user = {
