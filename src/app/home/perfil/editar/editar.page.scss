@@ -27,7 +27,6 @@
     padding: 5px;
 }
 
-
 .edit-list {
     margin: 5px;
 }
@@ -38,4 +37,54 @@
 
 .edit-inputs {
     text-align: left;
+}
+
+ion-card-content {
+    margin: 20px;
+}
+
+.segment {
+    margin-top: 10px;
+}
+
+.segment-button {
+    padding: -10px;
+}
+
+.passwordInputs{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2px;
+    width: 100%;
+    border: none;
+    display: inline-flex;
+}
+
+.passwordFields{
+    width: 100%;
+    flex-direction: column;
+}
+
+.passwordInput{
+    background-color: #ffffff;
+    color: #000000;
+    text-align: left;
+    border: none;
+    border-radius: none;
+    width: 100%;
+    padding: 2% 2% 2% 2%;
+}
+
+.passwordButton{
+    background-color: #ffffff;
+    color:#000000;
+    border-radius: none;
+    padding: 2% 2% 2% 2%;
+    width: 10%;
+    height: auto;
+}
+
+.passwordButtonIcon{
+    border-radius: none;
+    font-size: large;
 }
