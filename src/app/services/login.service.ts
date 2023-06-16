@@ -21,50 +21,72 @@ export class LoginService {
 
   //Metodo GET
   public async login(email: string, password: string, keepMeLoggedIn: boolean) {
-    const response = await fetch(`${this.api}/login?email=${email}&senha=${password}`);
-    const data = await response.json();
-    const userData = data;
-    this.user = {
-      id: userData.id,
-      firstName: userData.nome,
-      lastName: userData.sobrenome,
-      email: userData.email,
-      password: userData.senha,
-      phoneNumber: userData.telefone,
-      cpf: userData.cpf
-    };
-    this.storage.set('user', this.user);
-    this.storage.set('keepLogin', keepMeLoggedIn);
+    try {
+      const response = await fetch(`${this.api}/login?email=${email}&senha=${password}`);
+      console.log(response.status);
+      if (response.status == 200){
+        const data = await response.json();
+        const userData = data;
+        this.user = {
+          id: userData.id,
+          firstName: userData.nome,
+          lastName: userData.sobrenome,
+          email: userData.email,
+          password: userData.senha,
+          phoneNumber: userData.telefone,
+          cpf: userData.cpf
+        };
+        this.storage.set('user', this.user);
+        this.storage.set('keepLogin', keepMeLoggedIn);
+      }
+      else{
+        this.notification.longError('Erro ao efetuar login, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao efetuar login, tente novamente mais tarde!');
+    }
   }
 
   //Metodo POST
   public async signup(firstName: string, lastName: string, email: string, password: string) {
-    const dados = { nome: firstName, sobrenome: lastName, email: email, senha: password };
-    const response = await fetch(`${this.api}/cadastro`, {
-      method: 'POST',
-      body: JSON.stringify({
-        nome: `${firstName}`,
-        sobrenome: `${lastName}`,
-        email: `${email}`,
-        senha: `${password}`
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+    try {
+      const response = await fetch(`${this.api}/cadastro`, {
+        method: 'POST',
+        body: JSON.stringify({
+          nome: `${firstName}`,
+          sobrenome: `${lastName}`,
+          email: `${email}`,
+          senha: `${password}`
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      });
+      console.log(response.status);
+      if(response.status == 201){
+        const data = await response.json();
+        const userData = data;
+        this.user = {
+          id: userData.id,
+          firstName: userData.nome,
+          lastName: userData.sobrenome,
+          email: userData.email,
+          password: userData.senha,
+          phoneNumber: userData.telefone,
+          cpf: userData.cpf
+        };
+        this.storage.set('user', this.user);
+        this.storage.set('keepLogin', true);
       }
-    });
-    const data = await response.json();
-    const userData = data;
-    this.user = {
-      id: userData.id,
-      firstName: userData.nome,
-      lastName: userData.sobrenome,
-      email: userData.email,
-      password: userData.senha,
-      phoneNumber: userData.telefone,
-      cpf: userData.cpf
-    };
-    this.storage.set('user', this.user);
-    this.storage.set('keepLogin', true);
+      else{
+        this.notification.longError('Erro ao efetuar cadastro, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao efetuar cadastro, tente novamente mais tarde!');
+    }
+    
   }
 
   //Metodo PUT - Update
