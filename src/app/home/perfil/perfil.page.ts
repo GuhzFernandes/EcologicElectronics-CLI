@@ -22,6 +22,13 @@ export class PerfilPage implements OnInit {
     });
   }
 
+  async ionViewDidEnter(){
+    this.loginService.getUser().then( (user) => {
+      this.nome = user.firstName?? '';
+      this.email = user.email?? '';
+    });
+  }
+
   public logout():void{
     this.loginService.logout();
     this.router.navigate(["/start"]);

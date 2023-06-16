@@ -33,4 +33,17 @@ export class HistoricoPage implements OnInit {
     });
   }
 
+  async ionViewDidEnter(){
+    await this.loginService.getUser().then( (user) => {
+      this.idUsuario = user.id;
+    }).then(()=>{
+      this.pedidoService.listarPedidos(this.idUsuario)
+      .then( ()=> { this.pedidoService.getPedidos()
+        .then( (pedidos) => { this.pedidosAtivos = pedidos;
+          console.log(this.pedidosAtivos);
+        })
+      })
+    });
+  }
+
 }
