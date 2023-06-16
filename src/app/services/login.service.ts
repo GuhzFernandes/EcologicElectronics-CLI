@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular'
 import IUser from '../interfaces/IUser';
 import { HttpClient } from '@angular/common/http';
-import { observable } from 'rxjs';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LoginService {
   public storage: Storage;
   private api: string = 'http://localhost:8080/user'
 
-  constructor(storage: Storage, private http: HttpClient) {
+  constructor(storage: Storage, private http: HttpClient, private notification: NotificationService) {
     this.storage = storage;
     this.storage.create();
     this.storage.get('user');
@@ -68,35 +68,93 @@ export class LoginService {
   }
 
   //Metodo PUT - Update
-  public async update(nome: string, sobrenome: string, email: string, senha: string, telefone?: number, cpf?: number) {
+  public async updateUser(nome: string, sobrenome: string, email: string, telefone?: number, cpf?: number) {
     this.user = await this.getUser();
     this.user = {
       id: this.user.id,
       firstName: nome,
       lastName: sobrenome,
       email: email,
-      password: senha,
+      password: this.user.password,
       phoneNumber: telefone,
       cpf: cpf
     };
     console.log(this.user);
-    const response = await fetch(`${this.api}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        id: this.user.id,
-        nome: `${this.user.firstName}`,
-        sobrenome: `${this.user.lastName}`,
-        email: `${this.user.email}`,
-        senha: `${this.user.password}`,
-        telefone: this.user.phoneNumber,
-        cpf: this.user.cpf
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    });
-    console.log(await response.status);
-    this.storage.set('user', this.user);
+    try {
+      const response = await fetch(`${this.api}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          id: this.user.id,
+          nome: `${this.user.firstName}`,
+          sobrenome: `${this.user.lastName}`,
+          email: `${this.user.email}`,
+          senha: `${this.user.password}`,
+          telefone: this.user.phoneNumber,
+          cpf: this.user.cpf
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      });
+      if(await response.status == 200){
+        console.log(await response.status);
+        this.storage.set('user', this.user);
+        this.notification.defaultSuccess('Perfil Atualizado!');
+      }
+      else{
+        console.log(await response.status);
+        this.notification.longError('Erro ao atualizar os dados, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao atualizar os dados, tente novamente mais tarde!');
+    }
+    
+  }
+
+  //Metodo PUT - Update
+  public async updatePassword(senha: string) {
+    this.user = await this.getUser();
+    this.user = {
+      id: this.user.id,
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      email: this.user.email,
+      password: senha,
+      phoneNumber: this.user.phoneNumber,
+      cpf: this.user.cpf
+    };
+    console.log(this.user);
+    try {
+      const response = await fetch(`${this.api}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          id: this.user.id,
+          nome: `${this.user.firstName}`,
+          sobrenome: `${this.user.lastName}`,
+          email: `${this.user.email}`,
+          senha: `${this.user.password}`,
+          telefone: this.user.phoneNumber,
+          cpf: this.user.cpf
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      });
+      if(await response.status == 200){
+        console.log(await response.status);
+        this.storage.set('user', this.user);
+        this.notification.defaultSuccess('Senha Atualizada!');
+      }
+      else{
+        console.log(await response.status);
+        this.notification.longError('Erro ao atualizar a senha, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao atualizar a senha, tente novamente mais tarde!');
+    }
+    
   }
 
   public async checkUser(): Promise<boolean> {
@@ -111,11 +169,6 @@ export class LoginService {
   }
 
   public async getUser() {
-    /*
-    this.user = await this.storage.get('user');
-    console.log(this.user);
-    return this.user;
-    */
     return this.storage.get('user');
   }
 
@@ -131,6 +184,31 @@ export class LoginService {
   public logout() {
     this.storage.clear();
     console.log('Usuario resetado com sucesso!');
+  }
+
+  public async remove(){
+    this.user = await this.getUser();
+    try {
+      const response = await fetch(`${this.api}/deletar/${this.user.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      
+      if(await response.status == 200){
+        console.log(await response.status);
+        this.logout
+        this.notification.defaultSuccess('Perfil deletado com sucesso');
+      }
+      else{
+        console.log(await response.status);
+        this.notification.longError('Erro ao deletar a conta, tente novamente mais tarde!');
+      }
+      } catch (error) {
+        console.log(error);
+        this.notification.longError('Erro ao deletar a conta, tente novamente mais tarde!');
+      }
   }
 
 }
