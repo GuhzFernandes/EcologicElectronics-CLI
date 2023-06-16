@@ -84,19 +84,7 @@ export class LoginService {
       });
       console.log(response.status);
       if(response.status == 201){
-        const data = await response.json();
-        const userData = data;
-        this.user = {
-          id: userData.id,
-          firstName: userData.nome,
-          lastName: userData.sobrenome,
-          email: userData.email,
-          password: userData.senha,
-          phoneNumber: userData.telefone,
-          cpf: userData.cpf
-        };
-        this.storage.set('user', this.user);
-        this.storage.set('keepLogin', true);
+        this.login(email,password,false);
       }
       else{
         this.notification.longError('Erro ao efetuar cadastro, tente novamente mais tarde!');
