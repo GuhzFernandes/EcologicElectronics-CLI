@@ -48,7 +48,7 @@ export class SignupPage implements OnInit {
       this.notification.defaultError('É necesssario aceitar os termos para se cadastrar!');
       }
     else{
-      this.loginService.signup(this.firstName,this.lastName,this.email,this.password)
+      await this.loginService.signup(this.firstName,this.lastName,this.email,this.password)
         .then( () => {this.loginService.checkUser()
           .then( (isOK) =>{
             if(isOK){
