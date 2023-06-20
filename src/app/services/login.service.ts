@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular'
 import IUser from '../interfaces/IUser';
 import { HttpClient } from '@angular/common/http';
-import { observable } from 'rxjs';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,89 +12,188 @@ export class LoginService {
   public storage: Storage;
   private api: string = 'http://localhost:8080/user'
 
-  constructor(storage: Storage, private http: HttpClient) {
+  constructor(storage: Storage, private http: HttpClient, private notification: NotificationService) {
     this.storage = storage;
     this.storage.create();
     this.storage.get('user');
 
   }
 
-  //Metodo GET
+  //Metodo GET - Login
   public async login(email: string, password: string, keepMeLoggedIn: boolean) {
-    const response = await fetch(`${this.api}/login?email=${email}&senha=${password}`);
-    const data = await response.json();
-    const userData = data;
-    this.user = {
-      id: userData.id,
-      firstName: userData.nome,
-      lastName: userData.sobrenome,
-      email: userData.email,
-      password: userData.senha,
-      phoneNumber: userData.telefone,
-      cpf: userData.cpf
-    };
-    this.storage.set('user', this.user);
-    this.storage.set('keepLogin', keepMeLoggedIn);
-  }
-
-  //Metodo POST
-  public async signup(firstName: string, lastName: string, email: string, password: string) {
-    const dados = { nome: firstName, sobrenome: lastName, email: email, senha: password };
-    const response = await fetch(`${this.api}/cadastro`, {
-      method: 'POST',
-      body: JSON.stringify({
-        nome: `${firstName}`,
-        sobrenome: `${lastName}`,
-        email: `${email}`,
-        senha: `${password}`
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+    try {
+      const response = await fetch(`${this.api}/login?email=${email}&senha=${password}`);
+      console.log(response.status);
+      if (response.status == 200){
+        const data = await response.json();
+        const userData = data;
+        this.user = {
+          id: userData.id,
+          firstName: userData.nome,
+          lastName: userData.sobrenome,
+          email: userData.email,
+          password: userData.senha,
+          phoneNumber: userData.telefone,
+          cpf: userData.cpf
+        };
+        this.storage.set('user', this.user);
+        this.storage.set('keepLogin', keepMeLoggedIn);
       }
-    });
-    const data = await response.json();
-    const userData = data;
-    this.user = {
-      id: userData.id,
-      firstName: userData.nome,
-      lastName: userData.sobrenome,
-      email: userData.email,
-      password: userData.senha,
-      phoneNumber: userData.telefone,
-      cpf: userData.cpf
-    };
-    this.storage.set('user', this.user);
-    this.storage.set('keepLogin', true);
+      else if(response.status == 401){
+        this.notification.longError('Usuario não cadastrado!');
+      }
+      else{
+        this.notification.longError('Erro ao efetuar login, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao efetuar login, tente novamente mais tarde!');
+    }
   }
 
-  //Metodo PUT
-  public async update(nome: string, sobrenome: string, email: string, senha: string, telefone?: number, cpf?: number) {
+  //Metodo GET - Check se email está existente
+  public async checkEmail(email: string) {
+    try {
+      const response = await fetch(`${this.api}/esqueceusenha?email=${email}`);
+      console.log(response.status);
+      if (response.body){
+        return true;
+      }
+      else{
+        this.notification.longError('Erro ao verificar email, tente novamente mais tarde!');
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao verificar email, tente novamente mais tarde!');
+      return false;
+    }
+  }
+
+  //Metodo POST - Cadastro
+  public async signup(firstName: string, lastName: string, email: string, password: string) {
+    try {
+      const response = await fetch(`${this.api}/cadastro`, {
+        method: 'POST',
+        body: JSON.stringify({
+          nome: `${firstName}`,
+          sobrenome: `${lastName}`,
+          email: `${email}`,
+          senha: `${password}`
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      });
+      console.log(response.status);
+      if(response.status == 201){
+        console.log('Perfil criado!');
+        await this.login(email,password,false)
+        .then(()=>{
+          console.log('usuario conectado!');
+        })
+      }
+      else if(response.status == 400){
+        this.notification.longError('Email já cadastrado!');
+      }
+      else{
+        this.notification.longError('Erro ao efetuar cadastro, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao efetuar cadastro, tente novamente mais tarde!');
+    }
+    
+  }
+
+  //Metodo PUT - Atualização de informações de usuario
+  public async updateUser(nome: string, sobrenome: string, email: string, telefone?: number, cpf?: number) {
+    this.user = await this.getUser();
     this.user = {
       id: this.user.id,
       firstName: nome,
       lastName: sobrenome,
       email: email,
-      password: senha,
+      password: this.user.password,
       phoneNumber: telefone,
       cpf: cpf
     };
-    this.storage.set('user', this.user);
-    const response = await fetch(`${this.api}}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        id: this.user.id,
-        nome: `${this.user.firstName}`,
-        sobrenome: `${this.user.lastName}`,
-        email: `${this.user.email}`,
-        senha: `${this.user.password}`,
-        telefone: this.user.phoneNumber,
-        cpf: this.user.cpf
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    });
-    console.log(await response.json());
+    console.log(this.user);
+    try {
+      const response = await fetch(`${this.api}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          id: this.user.id,
+          nome: `${this.user.firstName}`,
+          sobrenome: `${this.user.lastName}`,
+          email: `${this.user.email}`,
+          senha: `${this.user.password}`,
+          telefone: this.user.phoneNumber,
+          cpf: this.user.cpf
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      });
+      if(await response.status == 200){
+        console.log(await response.status);
+        this.storage.set('user', this.user);
+        this.notification.defaultSuccess('Perfil Atualizado!');
+      }
+      else{
+        console.log(await response.status);
+        this.notification.longError('Erro ao atualizar os dados, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao atualizar os dados, tente novamente mais tarde!');
+    }
+    
+  }
+
+  //Metodo PUT - atualização de senha
+  public async updatePassword(senha: string) {
+    this.user = await this.getUser();
+    this.user = {
+      id: this.user.id,
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      email: this.user.email,
+      password: senha,
+      phoneNumber: this.user.phoneNumber,
+      cpf: this.user.cpf
+    };
+    console.log(this.user);
+    try {
+      const response = await fetch(`${this.api}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          id: this.user.id,
+          nome: `${this.user.firstName}`,
+          sobrenome: `${this.user.lastName}`,
+          email: `${this.user.email}`,
+          senha: `${this.user.password}`,
+          telefone: this.user.phoneNumber,
+          cpf: this.user.cpf
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      });
+      if(await response.status == 200){
+        console.log(await response.status);
+        this.storage.set('user', this.user);
+        this.notification.defaultSuccess('Senha Atualizada!');
+      }
+      else{
+        console.log(await response.status);
+        this.notification.longError('Erro ao atualizar a senha, tente novamente mais tarde!');
+      }
+    } catch (error) {
+      console.log(error);
+      this.notification.longError('Erro ao atualizar a senha, tente novamente mais tarde!');
+    }
+    
   }
 
   public async checkUser(): Promise<boolean> {
@@ -109,11 +208,6 @@ export class LoginService {
   }
 
   public async getUser() {
-    /*
-    this.user = await this.storage.get('user');
-    console.log(this.user);
-    return this.user;
-    */
     return this.storage.get('user');
   }
 
@@ -129,6 +223,31 @@ export class LoginService {
   public logout() {
     this.storage.clear();
     console.log('Usuario resetado com sucesso!');
+  }
+
+  public async remove(){
+    this.user = await this.getUser();
+    try {
+      const response = await fetch(`${this.api}/deletar/${this.user.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      
+      if(await response.status == 200){
+        console.log(await response.status);
+        this.logout
+        this.notification.defaultSuccess('Perfil deletado com sucesso');
+      }
+      else{
+        console.log(await response.status);
+        this.notification.longError('Erro ao deletar a conta, tente novamente mais tarde!');
+      }
+      } catch (error) {
+        console.log(error);
+        this.notification.longError('Erro ao deletar a conta, tente novamente mais tarde!');
+      }
   }
 
 }

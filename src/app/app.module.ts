@@ -12,12 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginService } from './services/login.service';
 import { PedidoService } from './services/pedido.service';
-
+import { NotificationService } from './services/notification.service';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(),HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, LoginService, PedidoService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, LoginService, PedidoService, NotificationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
